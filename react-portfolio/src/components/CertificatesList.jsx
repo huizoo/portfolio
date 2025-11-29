@@ -1,6 +1,7 @@
 export default function CertificatesList() {
   const certificates = [
-    { date: "2025.12", content: "정보처리기사 (예정)" }
+    { date: "2025.3", content: "삼성 상시 SW 역량 테스트 Level A" },
+    // { date: "2025.12", content: "정보처리기사 (예정)" }
   ];
 
   return (

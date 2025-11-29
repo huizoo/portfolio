@@ -57,7 +57,7 @@ body {
 /* PDF 페이지 구분 */
 @media print {
   @page {
-    margin: 20mm 10mm;
+    margin: 0;
   }
 
   .page-break {

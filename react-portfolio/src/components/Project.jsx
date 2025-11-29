@@ -1,27 +1,27 @@
 export default function Project({ project }) {
   return (
-    <div className="mb-16">
+    <div>
 
       {/* 제목과 기간 */}
       <div className="mb-6">
-        <h3 className="text-3xl font-bold text-slate-900 mb-2">
+        <h3 className="text-2xl font-bold text-slate-900 mb-2">
           {project.title}
         </h3>
-        <div className="text-sm text-gray-600 font-medium mb-4">
+        <div className="text-xs text-gray-600 font-medium mb-4">
           {project.date}
         </div>
-        <p className="text-base text-gray-800 leading-loose">
+        <p className="text-sm text-gray-800 leading-relaxed">
           {project.description}
         </p>
       </div>
 
       {/* 기술 스택 */}
       {project.techStack && (
-        <div className="flex flex-wrap gap-3 mb-10">
+        <div className="flex flex-wrap gap-2 mb-8">
           {project.techStack.map((tech, index) => (
             <span
               key={index}
-              className="inline-block px-3 py-1.5 bg-slate-100 text-slate-700 rounded text-sm font-medium"
+              className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium"
             >
               {tech}
             </span>
@@ -30,15 +30,15 @@ export default function Project({ project }) {
       )}
 
       {/* 역할 */}
-      <div className="mb-10">
-        <h4 className="text-lg font-bold text-slate-900 mb-4">
+      <div className="mb-8">
+        <h4 className="text-base font-bold text-slate-900 mb-3">
           역할
         </h4>
-        <ul className="space-y-3">
+        <ul className="space-y-2">
           {project.role.map((item, idx) => (
             <li
               key={idx}
-              className="text-base text-gray-800 leading-loose pl-6 relative before:content-['•'] before:absolute before:left-0"
+              className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
             >
               {item}
             </li>
@@ -47,15 +47,15 @@ export default function Project({ project }) {
       </div>
 
       {/* 주요 구현 */}
-      <div className="mb-10">
-        <h4 className="text-lg font-bold text-slate-900 mb-4">
+      <div className="mb-8">
+        <h4 className="text-base font-bold text-slate-900 mb-3">
           주요 구현
         </h4>
-        <ul className="space-y-3">
+        <ul className="space-y-2">
           {project.implementation.map((item, idx) => (
             <li
               key={idx}
-              className="text-base text-gray-800 leading-loose pl-6 relative before:content-['•'] before:absolute before:left-0"
+              className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
             >
               {item}
             </li>
@@ -64,15 +64,15 @@ export default function Project({ project }) {
       </div>
 
       {/* 기술적 포인트 */}
-      <div className="mb-10">
-        <h4 className="text-lg font-bold text-slate-900 mb-4">
+      <div className="mb-8">
+        <h4 className="text-base font-bold text-slate-900 mb-3">
           기술적 포인트
         </h4>
-        <ul className="space-y-3">
+        <ul className="space-y-2">
           {project.technical.map((item, idx) => (
             <li
               key={idx}
-              className="text-base text-gray-800 leading-loose pl-6 relative before:content-['•'] before:absolute before:left-0"
+              className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
             >
               {item}
             </li>
@@ -82,14 +82,14 @@ export default function Project({ project }) {
 
       {/* 성과 */}
       <div>
-        <h4 className="text-lg font-bold text-slate-900 mb-4">
+        <h4 className="text-base font-bold text-slate-900 mb-3">
           성과
         </h4>
-        <ul className="space-y-3">
+        <ul className="space-y-2">
           {project.achievements.map((item, idx) => (
             <li
               key={idx}
-              className="text-base text-gray-800 leading-loose pl-6 relative before:content-['•'] before:absolute before:left-0"
+              className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
             >
               {item}
             </li>

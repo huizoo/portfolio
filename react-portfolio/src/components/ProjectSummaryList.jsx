@@ -2,63 +2,101 @@ export default function ProjectSummaryList() {
   const projectSummary = [
     {
       title: "ToGather",
-      role: "Mobile Frontend · AI Server",
-      date: "2025.10 - 2025.11",
+      role: "AI, Frontend Lead",
+      date: "2025.10.10 - 2025.11.20",
       description: "커플이 일상을 기록하고 공유하는 모바일 라이프로그 서비스",
-      keywords: ["React Native", "FastAPI", "RAG", "Qdrant", "SSE"]
+      keywords: [
+        "개인화된 AI 챗봇",
+        "자연어 날짜 정규화 기반 Advanced RAG(Time-aware)",
+        "Qdrant 단일 컬렉션 + 메타데이터 필터 구조",
+        "Expo Router 모달 기반 탭 전환 UX 개선",
+      ],
     },
     {
       title: "Picky",
-      role: "Chrome Extension · Backend",
-      date: "2025.08 - 2025.10",
-      description: "브라우징 로그 기반 개인화 뉴스·퀴즈 추천 서비스",
-      keywords: ["Chrome Extension", "FastAPI", "MongoDB", "Vector DB", "증분 업데이트"]
+      role: "AI, Data Engineer, 팀장",
+      date: "2025.08.25 - 2025.10.01",
+      description: "브라우징 로그 기반 개인화 컨텐츠 추천 마이크로 러닝 서비스",
+      keywords: [
+        "크롬 확장프로그램 기반 사용자 로그 수집",
+        "O(1) 벡터 업데이트 기반 개인화 프로필 관리",
+        "크롤링·KoBART 뉴스 요약 파이프라인",
+        "MongoDB 샤딩 기반 대용량 데이터 설계",
+      ],
     },
     {
       title: "OtterReview",
       role: "Frontend Lead",
-      date: "2025.07 - 2025.08",
-      description: "GitHub 기반 주니어 개발자용 코드 리뷰 웹 서비스",
-      keywords: ["React", "Zustand", "SSE", "실시간 알림", "PR 플로우"]
-    }
+      date: "2025.07.14 - 2025.08.18",
+      description:
+        "주니어 개발자의 PR·리뷰 진입 장벽을 낮춘 실시간 협업 서비스",
+      keywords: [
+        "GitHub 기반 PR 생성·리뷰 플로우 UI 설계",
+        "Zustand 기반 복합 리뷰 상태 관리",
+        "코드 Diff 멀티라인 선택·스레드형 댓글 구조",
+        "SSE 기반 push 이벤트 알림 처리",
+      ],
+    },
   ];
 
   return (
-    <div className="space-y-6">
+    <div className="flex flex-col">
       {projectSummary.map((project, index) => (
-        <div key={index} className="flex gap-6">
-          {/* 타임라인 라인 */}
-          <div className="flex flex-col items-center shrink-0 w-8">
-            <div className="w-3 h-3 rounded-full border-2 border-green-600 bg-white mt-1.5" />
-            {index < projectSummary.length - 1 && (
-              <div className="w-0.5 flex-1 bg-green-600 mt-1" style={{ minHeight: '60px' }} />
+        <div key={index} className="flex gap-6 h-33">
+          {/* 타임라인 */}
+          <div className="flex flex-col items-center shrink-0 w-8 pt-1.5 -mb-1.5">
+            <div className="w-3 h-3 rounded-full border-2 border-green-600 bg-white" />
+            <div className="w-0.5 bg-green-600 flex-1" />
+            {index === projectSummary.length - 1 && (
+              <div className="w-3 h-3 rounded-full border-2 border-green-600 bg-white" />
             )}
           </div>
 
           {/* 프로젝트 정보 */}
-          <div className="flex-1 grid grid-cols-2 gap-6">
+          <div className="flex gap-6">
             {/* 좌측: 프로젝트명, 역할, 기간 */}
-            <div>
-              <h3 className="text-base font-bold text-slate-900 mb-1">{project.title}</h3>
-              <div className="text-sm text-green-600 font-medium mb-1">{project.role}</div>
-              <div className="text-xs text-gray-600">{project.date}</div>
+            <div className="w-56 shrink-0">
+              <div className="flex items-baseline gap-2">
+                <h3 className="text-base font-bold text-slate-900">
+                  {project.title}
+                </h3>
+                <span className="text-[10px] text-gray-600 whitespace-nowrap">
+                  {project.date}
+                </span>
+              </div>
+              <div className="text-sm text-slate-700 font-medium">
+                {project.role}
+              </div>
             </div>
 
             {/* 우측: 설명과 키워드 */}
-            <div>
-              <p className="text-sm text-gray-700 leading-relaxed mb-2">
+            <div className="flex-1">
+              <p className="text-sm font-semibold text-gray-900 leading-relaxed">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-1.5">
+              {/* 기존 컴마 구분 방식
+              <p className="text-xs text-gray-800">
                 {project.keywords.map((keyword, idx) => (
-                  <span
-                    key={idx}
-                    className="inline-block px-2 py-0.5 bg-slate-100 text-slate-700 rounded text-xs"
-                  >
-                    {keyword}
+                  <span key={idx}>
+                    <span className="inline-block whitespace-nowrap">
+                      {keyword}
+                    </span>
+                    {idx < project.keywords.length - 1 && ", "}
                   </span>
                 ))}
-              </div>
+              </p>
+              */}
+              {/* 리스트 방식 */}
+              <ul className="mt-2 space-y-1">
+                {project.keywords.map((keyword, idx) => (
+                  <li
+                    key={idx}
+                    className="text-xs text-gray-800 pl-3 relative before:content-['•'] before:absolute before:left-0"
+                  >
+                    {keyword}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
