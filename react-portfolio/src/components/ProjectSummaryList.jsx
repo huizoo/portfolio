@@ -9,7 +9,7 @@ export default function ProjectSummaryList() {
         "개인화된 AI 챗봇",
         "자연어 날짜 정규화 기반 Advanced RAG(Time-aware)",
         "Qdrant 단일 컬렉션 + 메타데이터 필터 구조",
-        "Expo Router 모달 기반 탭 전환 UX 개선",
+        "온보딩 상태 기반 전역 상태 설계 및 앱 재진입 시 단계 복원 로직 구현",
       ],
     },
     {

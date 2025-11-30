@@ -9,7 +9,7 @@ export default function CertificatesList() {
       {certificates.map((cert, index) => (
         <li
           key={index}
-          className="flex justify-between text-[11px] text-gray-800 leading-relaxed"
+          className="flex justify-between text-xs text-gray-800 leading-relaxed"
         >
           <span>{cert.date}</span>
           <span>{cert.content}</span>
