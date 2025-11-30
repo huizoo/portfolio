@@ -26,7 +26,7 @@ function App() {
             </Section>
 
             {/* 2행: Awards와 Certificates를 2열로 */}
-            <div className="grid grid-cols-[1.2fr_1fr] gap-x-12 mt-10">
+            <div className="grid grid-cols-[1.2fr_1fr] gap-x-12 mt-8">
               <Section title="Awards">
                 <AwardsList />
               </Section>
@@ -43,7 +43,7 @@ function App() {
             </div>
 
             {/* 3행: Project Summary - 타임라인 형태 */}
-            <div className="mt-10">
+            <div className="mt-8">
               <Section title="Project Summary">
                 <ProjectSummaryList />
               </Section>

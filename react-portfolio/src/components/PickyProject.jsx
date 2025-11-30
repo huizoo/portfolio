@@ -1,129 +1,153 @@
 import PageBreak from "./PageBreak";
 
-// ============================================
-// 프로젝트 데이터
-// ============================================
-const PROJECT_DATA = {
-  title: "Picky",
-  period: "2025.08 - 2025.10",
-  description: "브라우징 로그를 기반으로 사용자 관심사를 분석하고 개인화된 뉴스·퀴즈를 추천하는 Chrome Extension 기반 마이크로 러닝 서비스",
-
-  techStack: [
-    "Chrome Extension (MV3)",
-    "JavaScript",
-    "FastAPI",
-    "MongoDB",
-    "Sentence Embeddings",
-    "Qdrant",
-    "KoBART",
-  ],
-
-  role: [
-    "Chrome Extension에서 브라우징 로그를 수집해 서버로 전달하는 전체 파이프라인 설계·구현",
-    "로그 저장·전처리·사용자 프로필 벡터 생성에 필요한 백엔드 로직 구축",
-    "KoBART 기반 뉴스 요약 시스템 구축 및 배치 처리 파이프라인 구현",
-  ],
-
-  implementation: [
-    "체류 시간, 스크롤 깊이, 입력 비율, 시간대(KST) 등을 포함한 브라우징 로그 수집(DataCollector/HistoryCollector)",
-    "SPA·CORS·CSP 제약 해결을 위해 Offscreen Document 기반으로 URL HTML을 fetch 후 Readability로 텍스트 파싱",
-    "FastAPI `/user-logs` 엔드포인트를 통해 사용자별 MongoDB 컬렉션에 로그 저장",
-  ],
-
-  technical: [
-    "사용자 수 증가를 고려하여 브라우징/히스토리 로그를 해시 기반 컬렉션 샤딩 구조로 분산 저장해 조회 부하 최소화",
-    "초기 히스토리 전체 임베딩으로 사용자 프로필 벡터를 생성하고, 체류 시간·스크롤 깊이 기반 가중치를 함께 저장",
-    "새로운 방문 로그가 들어올 때마다 기존 벡터와 가중치 메타데이터를 활용해 O(1) 연산으로 증분 업데이트하는 벡터 관리 방식 설계",
-  ],
-
-  achievements: [
-    "SPA·보안 사이트 환경에서도 안정적으로 텍스트 로그를 수집할 수 있는 구조 확보로 추천 모델 데이터 커버리지 확대",
-    "브라우징 로그 수집 → 관심사 프로필 생성 → 추천까지의 E2E 파이프라인 구축으로 데모 단계에서 개인화 추천 성능 구현",
-  ],
-};
-
 export default function PickyProject() {
   return (
     <>
-      {/* 첫 번째 페이지 */}
+      {/* 📄 Page 1 */}
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
-          {/* 제목과 기간 */}
+          {/* 타이틀, 기간, 역할, 한 줄 설명 */}
           <div className="mb-6">
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">{PROJECT_DATA.title}</h3>
-            <div className="text-xs text-gray-600 font-medium mb-4">
-              {PROJECT_DATA.period}
+            <div className="flex items-baseline gap-2 mb-3">
+              <h3 className="text-2xl font-bold text-slate-900">Picky</h3>
+              <span className="text-[10px] text-gray-600 font-medium">
+                2025.08.25 - 2025.10.01
+              </span>
+              <span className="text-sm text-slate-700 font-medium ml-auto">
+                AI, Data Engineer, 팀장
+              </span>
             </div>
-            <p className="text-sm text-gray-800 leading-relaxed">
-              {PROJECT_DATA.description}
+            <p className="text-xs text-gray-800 leading-relaxed mb-3">
+              브라우징 로그를 기반으로 사용자 관심사를 분석하고 개인화된
+              뉴스·퀴즈를 추천하는 Chrome Extension 기반 마이크로 러닝 서비스
+            </p>
+
+            {/* 첫 페이지 스타일의 선 - description 아래 */}
+            <div className="relative">
+              {/* 전체 얇은 선 */}
+              <div className="w-full h-0.5 bg-green-600" />
+              {/* 왼쪽 두꺼운 선 */}
+              <div className="absolute left-0 -top-1.5 w-[1.5cm] h-3 bg-green-600" />
+            </div>
+          </div>
+
+          {/* 프로젝트 목표 */}
+          <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-2">
+              프로젝트 목표
+            </h4>
+            <p className="text-xs text-gray-800 leading-relaxed">
+              웹 사용자의 브라우징 행동 데이터를 바탕으로 관심사를 추론하고,{" "}
+              <br />
+              그에 맞춰 개인화된 뉴스 및 퀴즈 형태의 마이크로 러닝 콘텐츠를
+              추천하는 것을 목표로 했습니다.
             </p>
           </div>
 
-          {/* 기술 스택 */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {PROJECT_DATA.techStack.map((tech, index) => (
-              <span
-                key={index}
-                className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium"
-              >
-                {tech}
-              </span>
-            ))}
+          {/* 핵심 기여 */}
+          <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-3">
+              핵심 기여
+            </h4>
+            <ul className="space-y-2">
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                브라우징 로그 수집부터 관심사 벡터 생성까지 전체 파이프라인
+                설계·구현
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                KoBART 기반 뉴스 콘텐츠 요약 시스템 및 배치 처리 파이프라인 구축
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                OffscreenDocument API와 Readability로 보안 제한 사이트에서도
+                콘텐츠 수집 기능 구현
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                MongoDB 해시 샤딩으로 대용량 사용자 로그 분산 저장 및 관심사
+                프로필 벡터의 O(1) 증분 업데이트 구조 구현
+              </li>
+            </ul>
           </div>
 
-          {/* 역할 */}
-          <div className="mb-8">
-            <h4 className="text-base font-bold text-slate-900 mb-3">역할</h4>
-            <ul className="space-y-2">
-              {PROJECT_DATA.role.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
+          {/* 사용 기술 */}
+          <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-3">
+              사용 기술
+            </h4>
+            <div className="flex flex-wrap gap-2">
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                Chrome Extension (MV3)
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                JavaScript
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                FastAPI
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                KoBART
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                Sentence Embeddings
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                Qdrant
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                MongoDB
+              </span>
+            </div>
           </div>
 
           {/* 주요 구현 */}
-          <div className="mb-8">
-            <h4 className="text-base font-bold text-slate-900 mb-3">주요 구현</h4>
+          <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-3">
+              주요 구현
+            </h4>
             <ul className="space-y-2">
-              {PROJECT_DATA.implementation.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                크롬 확장 프로그램 로그 수집: Manifest V3 기반 확장을 통해
+                사용자의 브라우징 로그(체류 시간, 스크롤 깊이, 입력 비율, 접속
+                시간대 등)를 수집하여 서버로 보내는 파이프라인 설계·구현
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                관심사 프로필 벡터 생성: 수집된 로그를 백엔드에서
+                저장·전처리하고 문장 임베딩으로 관심사 프로필 벡터를 생성하는
+                로직 구현
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                KoBART 뉴스 요약 파이프라인: KoBART로 방문 뉴스 콘텐츠를
+                요약하는 배치 파이프라인 구축
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Offscreen Document 활용: Offscreen Document API와 Readability
+                라이브러리를 이용해 SPA 및 엄격한 CORS/CSP 사이트에서도
+                백그라운드에서 페이지 본문을 추출하여 로그 수집 제약 해소 (보안
+                정책으로 인한 콘텐츠 수집 불능 문제 해결)
+              </li>
             </ul>
           </div>
-        </div>
 
-        <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 4 -
-        </div>
-      </div>
-
-      <PageBreak />
-
-      {/* 두 번째 페이지 */}
-      <div className="relative h-[297mm] w-[210mm]">
-        <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           {/* 기술적 포인트 */}
-          <div className="mb-8">
-            <h4 className="text-base font-bold text-slate-900 mb-3">기술적 포인트</h4>
+          <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-3">
+              기술적 포인트
+            </h4>
             <ul className="space-y-2">
-              {PROJECT_DATA.technical.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                MongoDB 해시 샤딩 아키텍처: 사용자 ID 기반 해시로 MongoDB 컬렉션
+                샤딩을 구현하여 브라우징/히스토리 로그를 분산 저장하고, 사용자
+                수 증가 시에도 조회 부하를 최소화하는 확장성 확보
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                벡터 프로필 메타데이터 관리: 초기 히스토리 로그 전체를 임베딩해
+                사용자 관심사 초기 벡터를 생성하고, 체류 시간·스크롤 깊이에
+                비례한 가중치 메타데이터를 함께 저장
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                O(1) 관심 벡터 증분 업데이트: 새로운 방문 로그 발생 시 기존
+                벡터와 가중치 메타데이터를 활용해 상수 시간(O(1))으로 프로필
+                벡터를 갱신하도록 설계 (실시간 프로필 업데이트)
+              </li>
             </ul>
           </div>
 
@@ -131,14 +155,18 @@ export default function PickyProject() {
           <div>
             <h4 className="text-base font-bold text-slate-900 mb-3">성과</h4>
             <ul className="space-y-2">
-              {PROJECT_DATA.achievements.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-sm text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                SPA·보안 사이트 환경에서도 안정적으로 텍스트 로그를 수집할 수
+                있는 구조 확보로 추천 모델 데이터 커버리지 확대
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                브라우징 로그 수집 → 관심사 프로필 생성 → 추천까지의 E2E
+                파이프라인 구축으로 데모 단계에서 개인화 추천 성능 구현
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                {" "}
+                삼성 청년 SW·AI 아카데미 프로젝트 경연 우수상(2등) 수상
+              </li>
             </ul>
           </div>
         </div>

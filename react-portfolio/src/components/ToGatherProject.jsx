@@ -1,86 +1,5 @@
 import PageBreak from "./PageBreak";
 
-// ============================================
-// 프로젝트 데이터
-// ============================================
-const PROJECT_DATA = {
-  // 1) 타이틀
-  title: "ToGather",
-
-  // 2) 기간
-  period: "2025.10.10 - 2025.11.20",
-
-  // 3) 역할
-  role: "AI, Frontend Lead",
-
-  // 4) 한 줄 설명
-  description:
-    "커플이 일상을 기록하고 공유하며, 두 사람의 기록을 기반으로 개인화된 경험을 제공하는 모바일 라이프로그 서비스",
-
-  // 5) 프로젝트 목표 (Why)
-  objective:
-    "커플이 함께한 순간을 효과적으로 기록하고, 이를 바탕으로 맞춤형 추억 회상 경험을 제공하기 위해",
-
-  // 6) 내 핵심 기여 (What I did)
-  keyContributions: [
-    "커플 기록 기반 개인화 AI 챗봇: 자연어 날짜 파싱 → 메타데이터 필터 우선 적용 RAG 파이프라인 설계·구현으로 날짜 쿼리 정확도 개선",
-    "Qdrant 단일 컬렉션 + 메타데이터 필터 구조: couple_id별 벡터 격리 및 type(profile/diary/plan) 분리 저장으로 검색 성능 최적화",
-    "온보딩 상태 복원 로직: AsyncStorage 기반 coupleStatus/profile/invitationCode 우선순위 분기 설계로 앱 재진입 시 올바른 단계 복원",
-    "SSE 실시간 커플 연동: 피초대자 코드 입력 시 초대자 자동 화면 이동, 실시간 동기화로 초기 이탈률 감소",
-  ],
-
-  // 7) 사용 기술
-  techStack: [
-    "FastAPI",
-    "Qdrant",
-    "Text Embedding",
-    "RAG",
-    "React Native (Expo)",
-    "TypeScript",
-    "Zustand",
-    "TanStack Query",
-  ],
-
-  // 8) 핵심 구현 (How) - 온보딩
-  onboardingImplementation: {
-    title: "온보딩 상태 복원 로직",
-    diagramPath: "/ToGather_onboarding.png",
-    details: [
-      "온보딩 Context 기반 전역 상태 관리 및 앱 재진입 시 올바른 단계 복원 로직 구현",
-      "SSE 기반 커플 연동 실시간 동기화: 피초대자 코드 입력 → 초대자 자동 홈 이동",
-    ],
-    technical: "AsyncStorage 기반 상태 복원 및 SSE 실시간 동기화",
-    stateBranches: [
-      "coupleStatus === 'CONNECTED' → 홈 화면",
-      "hasProfile (nickname, birthday, mbti) → 프로필 완성 여부",
-      "invitationCode 존재 → 초대 대기 화면",
-    ],
-  },
-
-  // 8) 핵심 구현 (How) - RAG
-  ragImplementation: {
-    title: "개인화 AI 챗봇 RAG 파이프라인",
-    diagramPath: "/ToGather_RAG.png",
-    details: [
-      "Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장: 프로필 검색 없이 직접 조회, diary/plan 각 5개씩 벡터 검색",
-      "날짜 인식 문제 해결: 자연어 날짜 파싱 → Query Transformation → 메타데이터 필터 우선 적용 RAG 파이프라인 구축",
-    ],
-    technical: [
-      "3단계 분리 검색 파이프라인: ① profile(couple_id+type 필터 직접 조회) → ② diary 벡터 검색(limit=5, date_field=post_date_ts) → ③ plan 벡터 검색(limit=5, date_field=start_time_ts)",
-      "Date Parser 정규식 + 규칙 기반 12가지 패턴 파싱 후 Unix timestamp 범위로 변환 → Qdrant Range 필터 적용",
-      "Context Sandwich: 프로필(최상단 고정) → [diary] + [plan] 검색 결과 태그 구분 → 프롬프트로 LLM 전달",
-      "point_id 기반 자동 업서트: couple_{couple_id}_{type}_{id} 형식으로 수정 시 벡터 자동 갱신",
-    ],
-  },
-
-  // 9) 성과 (Impact, Result)
-  achievements: [
-    "온보딩 이탈률 감소: SSE 동기화로 커플 연동 과정 실시간 피드백 제공",
-    "날짜 쿼리 정확도 개선: '11월 12일' 질문 시 11월 13일 오검색 문제 해결 (날짜 필터 우선 적용)",
-    "검색 성능 최적화: Qdrant 단일 컬렉션 + 메타데이터 필터로 couple_id별 벡터 격리",
-  ],
-};
-
 export default function ToGatherProject() {
   return (
     <>
@@ -89,20 +8,27 @@ export default function ToGatherProject() {
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           {/* 1-4) 타이틀, 기간, 역할, 한 줄 설명 */}
           <div className="mb-6">
-            <div className="flex items-baseline gap-2 mb-1">
-              <h3 className="text-2xl font-bold text-slate-900">
-                {PROJECT_DATA.title}
-              </h3>
+            <div className="flex items-baseline gap-2 mb-3">
+              <h3 className="text-2xl font-bold text-slate-900">ToGather</h3>
               <span className="text-[10px] text-gray-600 font-medium">
-                {PROJECT_DATA.period}
+                2025.10.10 - 2025.11.20
+              </span>
+              <span className="text-sm text-slate-700 font-medium ml-auto">
+                AI, Frontend Lead
               </span>
             </div>
-            <div className="text-sm text-slate-700 font-medium mb-3">
-              {PROJECT_DATA.role}
-            </div>
-            <p className="text-xs text-gray-800 leading-relaxed">
-              {PROJECT_DATA.description}
+            <p className="text-xs text-gray-800 leading-relaxed mb-3">
+              커플이 일상을 기록하고 공유하며, 두 사람의 기록을 기반으로
+              개인화된 경험을 제공하는 모바일 라이프로그 서비스
             </p>
+
+            {/* 첫 페이지 스타일의 선 - description 아래 */}
+            <div className="relative">
+              {/* 전체 얇은 선 */}
+              <div className="w-full h-0.5 bg-green-600" />
+              {/* 왼쪽 두꺼운 선 */}
+              <div className="absolute left-0 -top-1.5 w-[1.5cm] h-3 bg-green-600" />
+            </div>
           </div>
 
           {/* 5) 프로젝트 목표 */}
@@ -111,7 +37,8 @@ export default function ToGatherProject() {
               프로젝트 목표
             </h4>
             <p className="text-xs text-gray-800 leading-relaxed">
-              {PROJECT_DATA.objective}
+              커플의 기록을 단순 저장이 아니라 다시 꺼내볼 수 있는 맞춤형 추억
+              회상 경험으로 만드는 것을 목표로 했습니다.
             </p>
           </div>
 
@@ -121,36 +48,80 @@ export default function ToGatherProject() {
               핵심 기여
             </h4>
             <ul className="space-y-2">
-              {PROJECT_DATA.keyContributions.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-xs text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                커플 기록 기반 개인화 AI 챗봇: <br />
+                자연어 날짜 파싱 → 메타데이터 필터 우선 적용 RAG 파이프라인
+                설계·구현으로 날짜 쿼리 정확도 개선
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Qdrant 단일 컬렉션 + 메타데이터 필터 구조로 couple_id별 벡터
+                격리 및 type(profile/diary/plan) 분리 저장 → 검색 성능 최적화
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                앱 재진입 시 상태 기반 분기 로직을 설계하여 커플
+                상태·프로필·초대 코드에 따라 온보딩을 복원
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                SSE 실시간 커플 연동: 피초대자 코드 입력 시 초대자 자동 화면
+                이동, 실시간 동기화로 초기 이탈률 감소
+              </li>
             </ul>
           </div>
 
           {/* 7) 사용 기술 */}
           <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-3">
+            <h4 className="text-base font-bold  text-slate-900 mb-3">
               사용 기술
             </h4>
             <div className="flex flex-wrap gap-2">
-              {PROJECT_DATA.techStack.map((tech, index) => (
-                <span
-                  key={index}
-                  className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium"
-                >
-                  {tech}
-                </span>
-              ))}
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                FastAPI
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                Qdrant
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                Text Embedding
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                RAG
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                React Native (Expo)
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                TypeScript
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                Zustand
+              </span>
+              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
+                TanStack Query
+              </span>
             </div>
           </div>
 
-          {/* 온보딩 로직 UI 스크린샷 */}
+          {/* 9) 성과 */}
           <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-3">성과</h4>
+            <ul className="space-y-2">
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                날짜 쿼리 정확도 대폭 향상: 자연어 날짜 파싱 + 메타데이터 필터
+                우선 적용으로 날짜 관련 질문 정확도 99% 달성
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                검색 성능 최적화: 단일 컬렉션 구조와 Range 필터 적용으로 Qdrant
+                검색 성능 최적화
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                온보딩 이탈률 감소: SSE 동기화로 커플 연동 과정 실시간 피드백
+                제공
+              </li>
+            </ul>
+          </div>
+
+          {/* 온보딩 로직 UI 스크린샷 */}
+          <div>
             <h4 className="text-base font-bold text-slate-900 mb-3">
               온보딩 플로우
             </h4>
@@ -182,21 +153,6 @@ export default function ToGatherProject() {
               />
             </div>
           </div>
-
-          {/* 9) 성과 */}
-          <div>
-            <h4 className="text-base font-bold text-slate-900 mb-3">성과</h4>
-            <ul className="space-y-2">
-              {PROJECT_DATA.achievements.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-xs text-gray-800 leading-relaxed pl-5 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
@@ -210,15 +166,26 @@ export default function ToGatherProject() {
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           <h4 className="text-xl font-bold text-slate-900 mb-4">
-            {PROJECT_DATA.onboardingImplementation.title}
+            온보딩 상태 복원 로직
           </h4>
+
+          {/* 도입 배경 */}
+          <div className="mb-4">
+            <h5 className="text-sm font-bold text-slate-900 mb-2">도입 배경</h5>
+            <p className="text-xs text-gray-800 leading-relaxed">
+              커플 상태, 프로필 정보 입력 여부, 초대 코드 존재 여부에 따라
+              <br />
+              사용자가 앱을 재진입했을 때 올바른 단계로 복원해주는 온보딩 분기
+              설계가 필요했습니다.
+            </p>
+          </div>
 
           {/* 다이어그램 */}
           <div className="mb-5">
             <img
-              src={PROJECT_DATA.onboardingImplementation.diagramPath}
-              alt={PROJECT_DATA.onboardingImplementation.title}
-              className="w-4/5 rounded-lg border border-gray-200"
+              src="/ToGather_onboarding.png"
+              alt="온보딩 상태 복원 로직"
+              className="w-full rounded-lg border border-gray-200"
             />
           </div>
 
@@ -226,16 +193,14 @@ export default function ToGatherProject() {
           <div className="mb-4">
             <h5 className="text-sm font-bold text-slate-900 mb-2">주요 구현</h5>
             <ul className="space-y-1.5">
-              {PROJECT_DATA.onboardingImplementation.details.map(
-                (item, index) => (
-                  <li
-                    key={index}
-                    className="text-xs text-gray-800 leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0"
-                  >
-                    {item}
-                  </li>
-                )
-              )}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                온보딩 Context 기반 전역 상태 관리 및 앱 재진입 시 올바른 단계
+                복원 로직 구현
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                SSE 기반 커플 연동 실시간 동기화: 피초대자 코드 입력 → 초대자
+                자동 홈 이동
+              </li>
             </ul>
           </div>
 
@@ -245,7 +210,7 @@ export default function ToGatherProject() {
               기술적 포인트
             </h5>
             <p className="text-xs text-gray-800 leading-relaxed">
-              {PROJECT_DATA.onboardingImplementation.technical}
+              AsyncStorage 기반 상태 복원 및 SSE 실시간 동기화
             </p>
           </div>
 
@@ -255,16 +220,15 @@ export default function ToGatherProject() {
               상태 기반 분기
             </h5>
             <ul className="space-y-1">
-              {PROJECT_DATA.onboardingImplementation.stateBranches.map(
-                (branch, index) => (
-                  <li
-                    key={index}
-                    className="text-xs text-gray-800 leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0"
-                  >
-                    {branch}
-                  </li>
-                )
-              )}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                coupleStatus === 'CONNECTED' → 홈 화면
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                hasProfile (nickname, birthday, mbti) → 프로필 완성 여부
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                invitationCode 존재 → 초대 대기 화면
+              </li>
             </ul>
           </div>
         </div>
@@ -280,41 +244,64 @@ export default function ToGatherProject() {
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           <h4 className="text-xl font-bold text-slate-900 mb-4">
-            {PROJECT_DATA.ragImplementation.title}
+            개인화 AI 챗봇 RAG 파이프라인(Advanced RAG)
           </h4>
+
+          {/* 도입 배경 */}
+          <div className="mb-4">
+            <h5 className="text-sm font-bold text-slate-900 mb-2">도입 배경</h5>
+            <div className="space-y-1.5">
+              <p className="text-xs text-gray-800 leading-relaxed">
+                챗봇 초기에는 날짜 중심 질문에서 정확도가 낮았습니다.
+                <br />
+                텍스트 기반 질문은 잘 매칭되었지만, 날짜 기반 질문에서는 날짜를
+                의미로 인식하지 못해
+                <br />
+                단순 문자열 유사도로 다른 날짜의 기록을 반환하거나, '저번 주'
+                같은 상대 날짜 표현을 처리하지 못했습니다.
+              </p>
+              <p className="text-xs text-gray-800 leading-relaxed">
+                해당 문제의 원인은 벡터 검색이 날짜 개념을 이해하지 못하고,{" "}
+                <br />
+                상대 날짜 표현은 정규 날짜로 변환되지 않아 검색 자체가
+                불가능하기 때문입니다.
+              </p>
+              <p className="text-xs text-gray-800 leading-relaxed">
+                이를 해결하기 위해 자연어 날짜를 정규화하는 Query
+                Transformation(Date Parser)을 도입해
+                <br />
+                모든 날짜 표현을 Unix timestamp 범위로 변환하고 메타데이터
+                필터를 우선 적용하는 구조로 개선했습니다.
+              </p>
+              <p className="text-xs text-gray-800 leading-relaxed">
+                아래 RAG 파이프라인은 이러한 문제를 해결하기 위해 설계한
+                구조입니다.
+              </p>
+            </div>
+          </div>
 
           {/* 다이어그램 + 챗봇 UI */}
           <div className="mb-5 flex gap-4">
             {/* 좌측: RAG 다이어그램 */}
-            <div className="w-2/3">
+            <div className="w-1/2">
               <img
-                src={PROJECT_DATA.ragImplementation.diagramPath}
-                alt={PROJECT_DATA.ragImplementation.title}
+                src="/ToGather_RAG.png"
+                alt="개인화 AI 챗봇 RAG 파이프라인"
                 className="w-full rounded-lg border border-gray-200"
               />
             </div>
 
-            {/* 우측: 챗봇 질문/답변 UI - 세로 나열, 가운데 정렬 */}
-            <div className="flex-1 flex flex-col gap-3 items-center justify-center">
+            {/* 우측: 챗봇 답변 UI */}
+            <div className="flex-1 flex flex-col items-center justify-center">
               <div className="text-center">
-                <p className="text-xs font-semibold text-gray-700 mb-1">
-                  질문 화면
-                </p>
-                <img
-                  src="/question.png"
-                  alt="챗봇 질문"
-                  className="h-64 rounded border border-gray-200"
-                />
-              </div>
-              <div className="text-center">
-                <p className="text-xs font-semibold text-gray-700 mb-1">
-                  답변 화면
-                </p>
                 <img
                   src="/answer.png"
                   alt="챗봇 답변"
-                  className="h-64 rounded border border-gray-200"
+                  className="h-100 rounded border border-gray-200 mx-auto"
                 />
+                <p className="text-sm font-semibold text-gray-900 mt-2">
+                  "우리 언제 연애 시작했더라?"에 대한 답변
+                </p>
               </div>
             </div>
           </div>
@@ -323,14 +310,14 @@ export default function ToGatherProject() {
           <div className="mb-4">
             <h5 className="text-sm font-bold text-slate-900 mb-2">주요 구현</h5>
             <ul className="space-y-1.5">
-              {PROJECT_DATA.ragImplementation.details.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-xs text-gray-800 leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장: 프로필
+                검색 없이 직접 조회, diary/plan 각 5개씩 벡터 검색
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                날짜 인식 문제 해결: 자연어 날짜 파싱 → Query Transformation →
+                메타데이터 필터 우선 적용 RAG 파이프라인 구축
+              </li>
             </ul>
           </div>
 
@@ -340,14 +327,24 @@ export default function ToGatherProject() {
               기술적 포인트
             </h5>
             <ul className="space-y-1.5">
-              {PROJECT_DATA.ragImplementation.technical.map((item, index) => (
-                <li
-                  key={index}
-                  className="text-xs text-gray-800 leading-relaxed pl-4 relative before:content-['•'] before:absolute before:left-0"
-                >
-                  {item}
-                </li>
-              ))}
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                3단계 분리 검색 파이프라인: <br />① profile(couple_id+type 필터
+                직접 조회) → ② diary 벡터 검색(limit=5) → ③ plan 벡터
+                검색(limit=5)
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Date Parser 정규식 + 규칙 기반 12가지 패턴 파싱 후 Unix
+                timestamp 범위로 변환 → Qdrant Range 필터 적용
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Context Sandwich: 프로필(최상단 고정) → [diary] + [plan] 검색
+                결과 태그 구분 → 프롬프트로 LLM 전달
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                {
+                  "point_id 기반 자동 업서트: couple_{couple_id}_{type}_{id} 형식으로 수정 시 벡터 자동 갱신"
+                }
+              </li>
             </ul>
           </div>
         </div>

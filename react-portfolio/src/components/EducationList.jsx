@@ -52,7 +52,7 @@ export default function EducationList() {
             {edu.details.map((detail, idx) => (
               <li
                 key={idx}
-                className="text-xs text-gray-900 pl-4 relative before:content-['•'] before:absolute before:left-0"
+                className="text-xs text-gray-900 pl-3 relative before:content-['•'] before:absolute before:left-0"
               >
                 {highlightKeywords(detail)}
               </li>
