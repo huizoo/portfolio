@@ -9,7 +9,7 @@ export default function Experience() {
   return (
     <ul className="space-y-1.5">
       {experiences.map((exp, index) => (
-        <li key={index} className="flex justify-between text-xs text-gray-800 leading-relaxed">
+        <li key={index} className="flex justify-between text-[11px] text-gray-800 leading-relaxed">
           <span>{exp.date}</span>
           <span>{exp.content}</span>
         </li>

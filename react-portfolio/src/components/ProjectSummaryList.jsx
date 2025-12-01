@@ -64,14 +64,14 @@ export default function ProjectSummaryList() {
                   {project.date}
                 </span>
               </div>
-              <div className="text-sm text-slate-700 font-medium">
+              <div className="text-[13px] text-slate-700 font-medium">
                 {project.role}
               </div>
             </div>
 
             {/* 우측: 설명과 키워드 */}
             <div className="flex-1">
-              <p className="text-sm font-semibold text-gray-900 leading-relaxed">
+              <p className="text-[13px] font-semibold text-gray-900 leading-relaxed">
                 {project.description}
               </p>
               {/* 기존 컴마 구분 방식
@@ -91,7 +91,7 @@ export default function ProjectSummaryList() {
                 {project.keywords.map((keyword, idx) => (
                   <li
                     key={idx}
-                    className="text-xs text-gray-800 pl-3 relative before:content-['•'] before:absolute before:left-0"
+                    className="text-[11px] text-gray-800 pl-3 relative before:content-['•'] before:absolute before:left-0"
                   >
                     {keyword}
                   </li>

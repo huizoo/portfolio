@@ -6,7 +6,7 @@ export default function CertificatesList() {
       {certificates.map((cert, index) => (
         <li
           key={index}
-          className="flex justify-between text-xs text-white leading-relaxed"
+          className="flex justify-between text-[11px] text-white leading-relaxed"
         >
           <span>{cert.date}</span>
           <span>{cert.content}</span>

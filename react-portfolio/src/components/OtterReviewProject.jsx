@@ -136,7 +136,7 @@ export default function OtterReviewProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 6 -
+          - 7 -
         </div>
       </div>
 

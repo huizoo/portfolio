@@ -172,7 +172,7 @@ export default function PickyProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 5 -
+          - 6 -
         </div>
       </div>
 

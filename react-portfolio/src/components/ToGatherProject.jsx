@@ -127,27 +127,27 @@ export default function ToGatherProject() {
             </h4>
             <div className="flex gap-2 justify-between">
               <img
-                src="/login.png"
+                src="/ToGather/login.png"
                 alt="로그인"
                 className="h-72 rounded border border-gray-200"
               />
               <img
-                src="/user-info.png"
+                src="/ToGather/user-info.png"
                 alt="사용자 정보"
                 className="h-72 rounded border border-gray-200"
               />
               <img
-                src="/couple-role.png"
+                src="/ToGather/couple-role.png"
                 alt="커플 역할 선택"
                 className="h-72 rounded border border-gray-200"
               />
               <img
-                src="/couple-invite.png"
+                src="/ToGather/couple-invite.png"
                 alt="커플 초대"
                 className="h-72 rounded border border-gray-200"
               />
               <img
-                src="/couple-join.png"
+                src="/ToGather/couple-join.png"
                 alt="커플 가입"
                 className="h-72 rounded border border-gray-200"
               />
@@ -156,7 +156,7 @@ export default function ToGatherProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 2 -
+          - 3 -
         </div>
       </div>
 
@@ -183,7 +183,7 @@ export default function ToGatherProject() {
           {/* 다이어그램 */}
           <div className="mb-5">
             <img
-              src="/ToGather_onboarding.png"
+              src="/ToGather/ToGather_onboarding.png"
               alt="온보딩 상태 복원 로직"
               className="w-full rounded-lg border border-gray-200"
             />
@@ -234,7 +234,7 @@ export default function ToGatherProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 3 -
+          - 4 -
         </div>
       </div>
 
@@ -285,7 +285,7 @@ export default function ToGatherProject() {
             {/* 좌측: RAG 다이어그램 */}
             <div className="w-1/2">
               <img
-                src="/ToGather_RAG.png"
+                src="/ToGather/ToGather_RAG.png"
                 alt="개인화 AI 챗봇 RAG 파이프라인"
                 className="w-full rounded-lg border border-gray-200"
               />
@@ -295,7 +295,7 @@ export default function ToGatherProject() {
             <div className="flex-1 flex flex-col items-center justify-center">
               <div className="text-center">
                 <img
-                  src="/answer.png"
+                  src="/ToGather/answer.png"
                   alt="챗봇 답변"
                   className="h-100 rounded border border-gray-200 mx-auto"
                 />
@@ -350,7 +350,7 @@ export default function ToGatherProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 4 -
+          - 5 -
         </div>
       </div>
 
