@@ -30,9 +30,9 @@ export default function FirstPage() {
               </h1>
               <p className="text-gray-900 mb-4">
                 <span className="text-md font-semibold">
-                  문제를 구조화하며,{" "}
+                  문제를 구조화
                 </span>
-                <span className="text-sm">답을 찾는 </span>
+                <span className="text-sm">하며, 답을 찾는 </span>
                 <span className="text-sm"> 개발자</span>
               </p>
 

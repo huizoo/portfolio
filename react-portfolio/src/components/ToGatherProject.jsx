@@ -101,7 +101,7 @@ export default function ToGatherProject() {
               {/* Backend */}
               <div className="text-sm text-gray-900">Backend</div>
               <div className="text-sm text-gray-800">
-                Java 17, Spring Boot, JPA
+                Java 17, Spring Boot, JPA, Spring Security
               </div>
 
               {/* Database */}
@@ -132,31 +132,56 @@ export default function ToGatherProject() {
           <div>
             <h4 className="text-xl font-bold text-green-600 mb-4">Preview</h4>
             <div className="flex gap-2 justify-between">
-              <img
-                src="/ToGather/home.jpg"
-                alt="Home"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src="/ToGather/diary.jpg"
-                alt="Diary"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src="/ToGather/feed.jpg"
-                alt="Feed"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src="/ToGather/plan.jpg"
-                alt="Plan"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src="/ToGather/settings.jpg"
-                alt="Settings"
-                className="h-70 rounded border border-gray-200"
-              />
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/ToGather/home.jpg"
+                  alt="Home"
+                  className="h-70 rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  홈 화면
+                </figcaption>
+              </figure>
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/ToGather/diary.jpg"
+                  alt="Diary"
+                  className="h-70 rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  다이어리 화면
+                </figcaption>
+              </figure>
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/ToGather/feed.jpg"
+                  alt="Feed"
+                  className="h-70 rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  피드 화면
+                </figcaption>
+              </figure>
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/ToGather/plan.jpg"
+                  alt="Plan"
+                  className="h-70 rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  일정 화면
+                </figcaption>
+              </figure>
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/ToGather/settings.jpg"
+                  alt="Settings"
+                  className="h-70 rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  설정 화면
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -173,98 +198,110 @@ export default function ToGatherProject() {
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           <Header />
 
-          {/* 1. AI 챗봇 */}
-          <div className="mb-6">
-            <h4 className="text-lg font-bold text-green-600 mb-3">
-              1. AI 챗봇 (개인화 RAG 파이프라인)
-            </h4>
-            <p className="text-xs text-gray-800 leading-relaxed mb-2">
-              커플의 기록을 기반으로 개인화된 답변을 제공하는 AI 챗봇 시스템
-              설계 및 구현
-            </p>
-            <ul className="space-y-1.5 text-xs text-gray-800">
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장 구조
-                설계
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                3단계 분리 검색: profile 직접 조회 → diary 벡터 검색 → plan 벡터
-                검색
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Context Sandwich 기법으로 프로필 고정 + 검색 결과 태그 구분
-              </li>
-            </ul>
-          </div>
-
-          <div className="w-full h-[0.3px] bg-green-600 mb-6" />
-
-          {/* 2. Date Parser */}
-          <div className="mb-6">
-            <h4 className="text-lg font-bold text-green-600 mb-3">
-              2. Date Parser (Query Transformation)
-            </h4>
-            <p className="text-xs text-gray-800 leading-relaxed mb-2">
-              자연어 날짜 표현을 정규화하여 날짜 기반 질문 정확도 향상
-            </p>
-            <ul className="space-y-1.5 text-xs text-gray-800">
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                정규식 + 규칙 기반 12가지 패턴 파싱 (저번 주, 작년 등)
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Unix timestamp 범위 변환 → Qdrant Range 필터 적용
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                날짜 쿼리 정확도 99% 달성
-              </li>
-            </ul>
-          </div>
-
-          <div className="w-full h-[0.3px] bg-green-600 mb-6" />
-
-          {/* 3. 온보딩 상태 복원 로직 */}
-          <div className="mb-6">
-            <h4 className="text-lg font-bold text-green-600 mb-3">
-              3. 온보딩 상태 복원 로직
-            </h4>
-            <p className="text-xs text-gray-800 leading-relaxed mb-2">
-              앱 재진입 시 커플 상태, 프로필, 초대 코드에 따라 올바른 단계로
-              복원
-            </p>
-            <ul className="space-y-1.5 text-xs text-gray-800">
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                AsyncStorage 기반 상태 복원 및 분기 로직 설계
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                coupleStatus, hasProfile, invitationCode 조합별 화면 분기
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                온보딩 Context로 전역 상태 관리
-              </li>
-            </ul>
-          </div>
-
-          <div className="w-full h-[0.3px] bg-green-600 mb-6" />
-
-          {/* 4. SSE 처리 */}
           <div>
-            <h4 className="text-lg font-bold text-green-600 mb-3">
-              4. SSE 실시간 커플 연동
+            <h4 className="text-2xl font-bold text-green-600 mb-3 pb-4">
+              담당 업무
             </h4>
-            <p className="text-xs text-gray-800 leading-relaxed mb-2">
-              Server-Sent Events를 활용한 커플 매칭 실시간 동기화
-            </p>
-            <ul className="space-y-1.5 text-xs text-gray-800">
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                피초대자 코드 입력 시 초대자 자동 홈 화면 이동
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                실시간 동기화로 커플 연동 대기 시간 최소화
-              </li>
-              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
-                온보딩 이탈률 감소 효과
-              </li>
-            </ul>
+            {/* 1. AI 챗봇 */}
+            <div className="mb-6">
+              <h4 className="text-2xl font-bold text-gray-800 mb-3">
+                1. AI 챗봇 (개인화 RAG 파이프라인)
+              </h4>
+              <p className="text-md text-gray-800 leading-relaxed mb-2">
+                커플의 기록을 기반으로 개인화된 답변을 제공하는 AI 챗봇 시스템
+                전체 설계 및 구현
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-800">
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장 구조
+                  설계
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  3단계 분리 검색: profile 직접 조회 → diary 벡터 검색 → plan
+                  벡터 검색
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  프롬프트 구성에 Context Sandwich 기법을 적용하고, 프로필은
+                  고정하며 검색 결과는 diary와 plan 태그로 구분
+                </li>
+              </ul>
+            </div>
+
+            <div className="w-full h-[0.3px] bg-green-600 mb-6" />
+
+            {/* 2. Date Parser */}
+            <div className="mb-6">
+              <h4 className="text-2xl font-bold text-gray-800 mb-3">
+                2. Date Parser (Query Transformation)
+              </h4>
+              <p className="text-md text-gray-800 leading-relaxed mb-2">
+                자연어 날짜 표현을 정규화하여 날짜 기반 질문에 대한 답변 정확도
+                향상
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-800">
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  정규 표현식과 규칙 기반으로 12가지 날짜 패턴(예: ‘저번 주’,
+                  ‘작년’ 등)을 파싱
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  Unix timestamp 범위 변환 → Qdrant Range 필터 적용
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  날짜 기반 질의 정확도 99% 달성
+                </li>
+              </ul>
+            </div>
+
+            <div className="w-full h-[0.3px] bg-green-600 mb-6" />
+
+            {/* 3. 온보딩 상태 복원 로직 */}
+            <div className="mb-6">
+              <h4 className="text-2xl font-bold text-gray-800 mb-3">
+                3. 온보딩 상태 복원 로직
+              </h4>
+              <p className="text-md text-gray-800 leading-relaxed mb-2">
+                앱 재진입 시 커플 상태, 프로필, 초대 코드에 따라 올바른 단계로
+                복원
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-800">
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  AsyncStorage 기반 상태 복원 및 분기 로직 설계
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  coupleStatus, hasProfile, invitationCode 조합에 따라 화면을
+                  분기해, 앱 재진입 시 적절한 화면으로 이동
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  온보딩 Context로 전역 상태 관리
+                </li>
+              </ul>
+            </div>
+
+            <div className="w-full h-[0.3px] bg-green-600 mb-6" />
+
+            {/* 4. SSE 처리 */}
+            <div>
+              <h4 className="text-2xl font-bold text-gray-800 mb-3">
+                4. SSE 실시간 커플 연동
+              </h4>
+              <p className="text-md text-gray-800 leading-relaxed mb-2">
+                Server-Sent Events를 활용한 커플 매칭 실시간 동기화
+              </p>
+              <ul className="space-y-1.5 text-sm text-gray-800">
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  피초대자가 코드를 입력하면 초대자의 화면이 자동으로 홈으로
+                  전환되도록 실시간 동기화
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  펫 선택 화면에서도 한 명이 선택 시 상대 화면에 실시간
+                  반영되도록 구현
+                </li>
+                <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                  실시간 동기화로 연동 대기 시간을 최소화하고, 온보딩 흐름을
+                  간소화해 이탈 가능성 감소
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -275,7 +312,110 @@ export default function ToGatherProject() {
 
       <PageBreak />
 
-      {/* 📄 Page 3 - 온보딩 */}
+      {/* 📄 Page 3 - RAG */}
+      <div className="relative h-[297mm] w-[210mm]">
+        <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
+          <Header />
+
+          <h4 className="text-xl font-bold text-slate-900 mb-4">
+            Time-aware RAG 파이프라인(Advanced RAG)
+          </h4>
+
+          {/* 도입 배경 + 다이어그램 */}
+          <div className="mb-5 grid grid-cols-2 gap-6">
+            {/* 좌측: 도입 배경 */}
+            <div>
+              <h5 className="text-sm font-bold text-slate-900 mb-2">
+                도입 배경
+              </h5>
+              <div className="space-y-4">
+                <p className="text-xs text-gray-800 leading-relaxed">
+                  챗봇 초기에는 날짜 중심 질문에서 정확도가 낮았습니다. <br />
+                  텍스트 기반 질문은 잘 매칭되었지만, <br />
+                  날짜 기반 질문에서는 날짜를 의미로 인식하지 못해 <br />
+                  단순 문자열 유사도로 다른 날짜의 기록을 반환하거나, <br />
+                  '저번 주' 같은 상대 날짜 표현을 처리하지 못했습니다.
+                </p>
+                <p className="text-xs text-gray-800 leading-relaxed">
+                  해당 문제의 원인은 벡터 검색이 <br />
+                  날짜 개념을 이해하지 못하고, <br />
+                  상대 날짜 표현은 정규 날짜로 변환되지 않아 <br />
+                  검색 자체가 불가능하기 때문입니다.
+                </p>
+                <p className="text-xs text-gray-800 leading-relaxed">
+                  이를 해결하기 위해 자연어 날짜를 정규화하는 <br />
+                  Query Transformation(Date Parser)을 도입해 <br />
+                  모든 날짜 표현을 Unix timestamp 범위로 변환하고 <br />
+                  메타데이터 필터를 우선 적용하는 구조로 개선했습니다.
+                </p>
+                <p className="text-xs text-gray-800 leading-relaxed">
+                  오른쪽 RAG 파이프라인은 <br />
+                  이러한 문제를 해결하기 위해 설계한 구조입니다.
+                </p>
+              </div>
+            </div>
+
+            {/* 우측: RAG 다이어그램 */}
+            <div className="flex items-center">
+              <img
+                src="/ToGather/ToGather_RAG.png"
+                alt="개인화 AI 챗봇 RAG 파이프라인"
+                className="w-full rounded-lg border border-gray-200"
+              />
+            </div>
+          </div>
+
+          {/* 상세 설명 */}
+          <div className="mb-4">
+            <h5 className="text-sm font-bold text-slate-900 mb-2">주요 구현</h5>
+            <ul className="space-y-1.5">
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장: 프로필
+                검색 없이 직접 조회, diary/plan 각 5개씩 벡터 검색
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                날짜 인식 문제 해결: 자연어 날짜 파싱 → Query Transformation →
+                메타데이터 필터 우선 적용 RAG 파이프라인 구축
+              </li>
+            </ul>
+          </div>
+
+          {/* 기술적 포인트 */}
+          <div>
+            <h5 className="text-sm font-bold text-slate-900 mb-2">
+              기술적 포인트
+            </h5>
+            <ul className="space-y-1.5">
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                3단계 분리 검색 파이프라인: <br />① profile(couple_id+type 필터
+                직접 조회) → ② diary 벡터 검색(limit=5) → ③ plan 벡터
+                검색(limit=5)
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Date Parser 정규식 + 규칙 기반 12가지 패턴 파싱 후 Unix
+                timestamp 범위로 변환 → Qdrant Range 필터 적용
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Context Sandwich: 프로필(최상단 고정) → [diary] + [plan] 검색
+                결과 태그 구분 → 프롬프트로 LLM 전달
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                {
+                  "point_id 기반 자동 업서트: couple_{couple_id}_{type}_{id} 형식으로 수정 시 벡터 자동 갱신"
+                }
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
+          - 5 -
+        </div>
+      </div>
+
+      <PageBreak />
+
+      {/* 📄 Page 4 - 온보딩 */}
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           <Header />
@@ -291,7 +431,8 @@ export default function ToGatherProject() {
               커플 상태, 프로필 정보 입력 여부, 초대 코드 존재 여부에 따라
               <br />
               사용자가 앱을 재진입했을 때 올바른 단계로 복원해주는 온보딩 분기
-              설계가 필요했습니다.
+              설계가 필요했습니다. <br />
+              아래는 앱의 온보딩·로그인 플로우를 나타낸 플로우차트입니다.
             </p>
           </div>
 
@@ -343,124 +484,6 @@ export default function ToGatherProject() {
               </li>
               <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
                 invitationCode 존재 → 초대 대기 화면
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 5 -
-        </div>
-      </div>
-
-      <PageBreak />
-
-      {/* 📄 Page 4 - RAG */}
-      <div className="relative h-[297mm] w-[210mm]">
-        <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
-          <Header />
-
-          <h4 className="text-xl font-bold text-slate-900 mb-4">
-            개인화 AI 챗봇 RAG 파이프라인(Advanced RAG)
-          </h4>
-
-          {/* 도입 배경 */}
-          <div className="mb-4">
-            <h5 className="text-sm font-bold text-slate-900 mb-2">도입 배경</h5>
-            <div className="space-y-1.5">
-              <p className="text-xs text-gray-800 leading-relaxed">
-                챗봇 초기에는 날짜 중심 질문에서 정확도가 낮았습니다.
-                <br />
-                텍스트 기반 질문은 잘 매칭되었지만, 날짜 기반 질문에서는 날짜를
-                의미로 인식하지 못해
-                <br />
-                단순 문자열 유사도로 다른 날짜의 기록을 반환하거나, '저번 주'
-                같은 상대 날짜 표현을 처리하지 못했습니다.
-              </p>
-              <p className="text-xs text-gray-800 leading-relaxed">
-                해당 문제의 원인은 벡터 검색이 날짜 개념을 이해하지 못하고,{" "}
-                <br />
-                상대 날짜 표현은 정규 날짜로 변환되지 않아 검색 자체가
-                불가능하기 때문입니다.
-              </p>
-              <p className="text-xs text-gray-800 leading-relaxed">
-                이를 해결하기 위해 자연어 날짜를 정규화하는 Query
-                Transformation(Date Parser)을 도입해
-                <br />
-                모든 날짜 표현을 Unix timestamp 범위로 변환하고 메타데이터
-                필터를 우선 적용하는 구조로 개선했습니다.
-              </p>
-              <p className="text-xs text-gray-800 leading-relaxed">
-                아래 RAG 파이프라인은 이러한 문제를 해결하기 위해 설계한
-                구조입니다.
-              </p>
-            </div>
-          </div>
-
-          {/* 다이어그램 + 챗봇 UI */}
-          <div className="mb-5 flex gap-4">
-            {/* 좌측: RAG 다이어그램 */}
-            <div className="w-1/2">
-              <img
-                src="/ToGather/ToGather_RAG.png"
-                alt="개인화 AI 챗봇 RAG 파이프라인"
-                className="w-full rounded-lg border border-gray-200"
-              />
-            </div>
-
-            {/* 우측: 챗봇 답변 UI */}
-            <div className="flex-1 flex flex-col items-center justify-center">
-              <div className="text-center">
-                <img
-                  src="/ToGather/answer.png"
-                  alt="챗봇 답변"
-                  className="h-100 rounded border border-gray-200 mx-auto"
-                />
-                <p className="text-sm font-semibold text-gray-900 mt-2">
-                  "우리 언제 연애 시작했더라?"에 대한 답변
-                </p>
-              </div>
-            </div>
-          </div>
-
-          {/* 상세 설명 */}
-          <div className="mb-4">
-            <h5 className="text-sm font-bold text-slate-900 mb-2">주요 구현</h5>
-            <ul className="space-y-1.5">
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장: 프로필
-                검색 없이 직접 조회, diary/plan 각 5개씩 벡터 검색
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                날짜 인식 문제 해결: 자연어 날짜 파싱 → Query Transformation →
-                메타데이터 필터 우선 적용 RAG 파이프라인 구축
-              </li>
-            </ul>
-          </div>
-
-          {/* 기술적 포인트 */}
-          <div>
-            <h5 className="text-sm font-bold text-slate-900 mb-2">
-              기술적 포인트
-            </h5>
-            <ul className="space-y-1.5">
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                3단계 분리 검색 파이프라인: <br />① profile(couple_id+type 필터
-                직접 조회) → ② diary 벡터 검색(limit=5) → ③ plan 벡터
-                검색(limit=5)
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Date Parser 정규식 + 규칙 기반 12가지 패턴 파싱 후 Unix
-                timestamp 범위로 변환 → Qdrant Range 필터 적용
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Context Sandwich: 프로필(최상단 고정) → [diary] + [plan] 검색
-                결과 태그 구분 → 프롬프트로 LLM 전달
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                {
-                  "point_id 기반 자동 업서트: couple_{couple_id}_{type}_{id} 형식으로 수정 시 벡터 자동 갱신"
-                }
               </li>
             </ul>
           </div>

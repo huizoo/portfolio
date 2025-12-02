@@ -90,23 +90,30 @@ export default function OttereviewProject() {
               {/* Frontend */}
               <div className="text-sm text-gray-900">Frontend</div>
               <div className="text-sm text-gray-800">
-                React, TypeScript, Vite, Zustand, TanStack Query, Monaco Editor
+                React, TypeScript, Zustand, TailwindCSS, Monaco Editor, tldraw,
+                STOMP/SockJS
               </div>
 
               {/* Backend */}
               <div className="text-sm text-gray-900">Backend</div>
               <div className="text-sm text-gray-800">
-                Java 17, Spring Boot, JPA, WebSocket, STOMP, GitHub API
+                Java 17, Spring Boot, JPA, Spring Security, GitHub API
               </div>
 
               {/* Database */}
               <div className="text-sm text-gray-900">Database</div>
               <div className="text-sm text-gray-800">MySQL, Redis</div>
 
+              {/* AI */}
+              <div className="text-sm text-gray-900">AI</div>
+              <div className="text-sm text-gray-800">
+                Python, FastAPI, OpenAI API, Pinecone, WhisperAI
+              </div>
+
               {/* Infra */}
               <div className="text-sm text-gray-900">Infra</div>
               <div className="text-sm text-gray-800">
-                Docker, GitLab CI/CD, Jenkins, Nginx, Ubuntu, EC2
+                Docker, GitLab CI/CD, Jenkins, Nginx, Ubuntu, EC2, S3
               </div>
             </div>
 
@@ -119,32 +126,28 @@ export default function OttereviewProject() {
           {/* Row 4: Preview */}
           <div>
             <h4 className="text-xl font-bold text-green-600 mb-4">Preview</h4>
-            <div className="flex gap-2 justify-between">
-              <img
-                src=""
-                alt="Preview 1"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 2"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 3"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 4"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 5"
-                className="h-70 rounded border border-gray-200"
-              />
+            <div className="flex gap-4 justify-between">
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/Ottereview/home.png"
+                  alt="OtterReview 홈 화면"
+                  className="h-[200px] w-auto object-contain rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  메인 홈 화면
+                </figcaption>
+              </figure>
+
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/Ottereview/codediff.png"
+                  alt="OtterReview 코드 비교 화면"
+                  className="h-[200px] w-auto object-contain rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  코드 Diff 리뷰 화면
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -160,17 +163,6 @@ export default function OttereviewProject() {
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           <Header />
-
-          {/* 프로젝트 목표 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-2">
-              프로젝트 목표
-            </h4>
-            <p className="text-xs text-gray-800 leading-relaxed">
-              주니어 개발자가 쉽게 코드 리뷰에 참여할 수 있도록 직관적인 UI/UX를
-              제공하는 것을 목표로 했습니다.
-            </p>
-          </div>
 
           {/* 프로젝트 목표 */}
           <div className="mb-6">
@@ -201,33 +193,6 @@ export default function OttereviewProject() {
                 라우팅 및 SSE 알림 구조 설계
               </li>
             </ul>
-          </div>
-
-          {/* 사용 기술 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-3">
-              사용 기술
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                React
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Vite
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Zustand
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                React Router
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                SSE
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Tailwind CSS
-              </span>
-            </div>
           </div>
 
           {/* 주요 구현 */}

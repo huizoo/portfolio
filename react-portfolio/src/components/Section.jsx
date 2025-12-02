@@ -23,7 +23,7 @@ export default function Section({
   children,
   className = "",
   layout = "vertical",
-  line = true, 
+  line = true,
 }) {
   if (layout === "horizontal") {
     return (

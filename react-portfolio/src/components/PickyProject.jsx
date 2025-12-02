@@ -31,8 +31,8 @@ export default function PickyProject() {
                 </div>
                 <p className="text-xs font-semibold text-gray-800 leading-relaxed">
                   브라우징 로그를 기반으로 사용자 관심사를 분석하고 <br />
-                  개인화된 뉴스·퀴즈를 추천하는 크롬 확장 기반 마이크로
-                  러닝 서비스
+                  개인화된 뉴스·퀴즈를 추천하는 크롬 확장 기반 마이크로 러닝
+                  서비스
                 </p>
               </div>
 
@@ -99,7 +99,7 @@ export default function PickyProject() {
               {/* Backend */}
               <div className="text-sm text-gray-900">Backend</div>
               <div className="text-sm text-gray-800">
-                Java 17, Spring Boot, JPA
+                Java 17, Spring Boot, JPA, Spring Security
               </div>
 
               {/* Database */}
@@ -109,7 +109,8 @@ export default function PickyProject() {
               {/* AI/Data */}
               <div className="text-sm text-gray-900">AI/Data</div>
               <div className="text-sm text-gray-800">
-                Python 3.11, FastAPI, OpenAI API, KoBART, Qdrant, Chrome Extension (MV3)
+                Python 3.11, FastAPI, OpenAI API, KoBART, Qdrant, Chrome
+                Extension (MV3)
               </div>
 
               {/* Infra */}
@@ -128,32 +129,27 @@ export default function PickyProject() {
           {/* Row 4: Preview */}
           <div>
             <h4 className="text-xl font-bold text-green-600 mb-4">Preview</h4>
-            <div className="flex gap-2 justify-between">
-              <img
-                src=""
-                alt="Preview 1"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 2"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 3"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 4"
-                className="h-70 rounded border border-gray-200"
-              />
-              <img
-                src=""
-                alt="Preview 5"
-                className="h-70 rounded border border-gray-200"
-              />
+            <div className="flex gap-4 justify-center">
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/Picky/extension.png"
+                  alt="Picky Extension"
+                  className="h-[200px] w-auto object-contain rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  확장 프로그램
+                </figcaption>
+              </figure>
+              <figure className="flex flex-col items-center">
+                <img
+                  src="/Picky/news.png"
+                  alt="Picky News"
+                  className="h-[200px] w-auto object-contain rounded border border-gray-200"
+                />
+                <figcaption className="text-xs text-gray-700 mt-2">
+                  캐릭터 & 뉴스
+                </figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -169,19 +165,6 @@ export default function PickyProject() {
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
           <Header />
-
-          {/* 프로젝트 목표 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-2">
-              프로젝트 목표
-            </h4>
-            <p className="text-xs text-gray-800 leading-relaxed">
-              웹 사용자의 브라우징 행동 데이터를 바탕으로 관심사를 추론하고,{" "}
-              <br />
-              그에 맞춰 개인화된 뉴스 및 퀴즈 형태의 마이크로 러닝 콘텐츠를
-              추천하는 것을 목표로 했습니다.
-            </p>
-          </div>
 
           {/* 프로젝트 목표 */}
           <div className="mb-6">
@@ -218,36 +201,6 @@ export default function PickyProject() {
                 프로필 벡터의 O(1) 증분 업데이트 구조 구현
               </li>
             </ul>
-          </div>
-
-          {/* 사용 기술 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-3">
-              사용 기술
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Chrome Extension (MV3)
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                JavaScript
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                FastAPI
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                KoBART
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Sentence Embeddings
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Qdrant
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                MongoDB
-              </span>
-            </div>
           </div>
 
           {/* 주요 구현 */}
