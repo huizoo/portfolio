@@ -4,28 +4,32 @@ export default function ProjectSummaryList() {
       title: "ToGather",
       role: "AI, Frontend Lead",
       date: "2025.10.10 - 2025.11.20",
-      description: "커플이 일상을 기록하고 공유하는 모바일 라이프로그 서비스",
+      description:
+        "커플이 일상을 기록하고 공유하는 모바일 라이프로그 서비스",
       keywords: [
         "개인화된 AI 챗봇",
         "자연어 날짜 정규화 기반 Advanced RAG(Time-aware)",
         "Qdrant 단일 컬렉션 + 메타데이터 필터 구조",
         "온보딩 상태 기반 전역 상태 설계 및 앱 재진입 시 단계 복원 로직 구현",
       ],
+      page: "3p",
     },
     {
       title: "Picky",
-      role: "AI, Data Engineer, 팀장",
+      role: "AI/Data Engineer, 팀장",
       date: "2025.08.25 - 2025.10.01",
-      description: "브라우징 로그 기반 개인화 컨텐츠 추천 마이크로 러닝 서비스",
+      description:
+        "브라우징 로그 기반 개인화 컨텐츠 추천 마이크로 러닝 서비스",
       keywords: [
         "크롬 확장프로그램 기반 사용자 로그 수집",
         "O(1) 벡터 업데이트 기반 개인화 프로필 관리",
         "크롤링·KoBART 뉴스 요약 파이프라인",
         "MongoDB 샤딩 기반 대용량 데이터 설계",
       ],
+      page: "7p",
     },
     {
-      title: "OtterReview",
+      title: "Ottereview",
       role: "Frontend Lead",
       date: "2025.07.14 - 2025.08.18",
       description:
@@ -36,6 +40,7 @@ export default function ProjectSummaryList() {
         "코드 Diff 멀티라인 선택·스레드형 댓글 구조",
         "SSE 기반 push 이벤트 알림 처리",
       ],
+      page: "10p",
     },
   ];
 
@@ -71,21 +76,10 @@ export default function ProjectSummaryList() {
 
             {/* 우측: 설명과 키워드 */}
             <div className="flex-1">
-              <p className="text-[13px] font-semibold text-gray-900 leading-relaxed">
-                {project.description}
+              <p className="text-[13px] text-gray-900 leading-relaxed">
+                <span className="font-semibold">{project.description}</span>
+                <span className="font-base"> ({project.page})</span>
               </p>
-              {/* 기존 컴마 구분 방식
-              <p className="text-xs text-gray-800">
-                {project.keywords.map((keyword, idx) => (
-                  <span key={idx}>
-                    <span className="inline-block whitespace-nowrap">
-                      {keyword}
-                    </span>
-                    {idx < project.keywords.length - 1 && ", "}
-                  </span>
-                ))}
-              </p>
-              */}
               {/* 리스트 방식 */}
               <ul className="mt-2 space-y-1">
                 {project.keywords.map((keyword, idx) => (

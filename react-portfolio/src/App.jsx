@@ -8,7 +8,7 @@ import Experience from "./components/Experience";
 import ProjectSummaryList from "./components/ProjectSummaryList";
 import ToGatherProject from "./components/ToGatherProject";
 import PickyProject from "./components/PickyProject";
-import OtterReviewProject from "./components/OtterReviewProject";
+import OttereviewProject from "./components/OttereviewProject";
 import PageBreak from "./components/PageBreak";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             <Header />
 
             {/* 1행: Education */}
-            <Section title="Education" layout="horizontal">
+            <Section title="Education" layout="horizontal" line={false}>
               <EducationList />
             </Section>
 
@@ -70,8 +70,8 @@ function App() {
         {/* 📄 Page 6-7: Picky 프로젝트 */}
         <PickyProject />
 
-        {/* 📄 Page 8-9: OtterReview 프로젝트 */}
-        <OtterReviewProject />
+        {/* 📄 Page 8-9: Ottereview 프로젝트 */}
+        <OttereviewProject />
       </div>
     </div>
   );

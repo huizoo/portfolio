@@ -23,13 +23,13 @@ export default function Section({
   children,
   className = "",
   layout = "vertical",
+  line = true, 
 }) {
   if (layout === "horizontal") {
     return (
       <section className={className}>
-        {renderTopLine()}
-
-        <div className="grid grid-cols-3 gap-8 mt-4">
+        {line && renderTopLine()}
+        <div className="grid grid-cols-3 gap-8">
           <h2 className="text-2xl text-green-600 font-bold">{title}</h2>
           <div className="col-span-2">{children}</div>
         </div>
@@ -41,7 +41,7 @@ export default function Section({
     <section className={className}>
       {title && (
         <>
-          {renderTopLine()}
+          {line && renderTopLine()}
           <h2 className="text-2xl text-green-600 font-bold mb-4">{title}</h2>
         </>
       )}

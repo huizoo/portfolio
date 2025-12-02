@@ -1,34 +1,186 @@
 import PageBreak from "./PageBreak";
+import Header from "./Header";
 
 export default function PickyProject() {
   return (
     <>
-      {/* 📄 Page 1 */}
+      {/* 📄 Page 1 - 프로젝트 소개 */}
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
-          {/* 타이틀, 기간, 역할, 한 줄 설명 */}
-          <div className="mb-6">
-            <div className="flex items-baseline gap-2 mb-3">
-              <h3 className="text-2xl font-bold text-slate-900">Picky</h3>
-              <span className="text-[10px] text-gray-600 font-medium">
-                2025.08.25 - 2025.10.01
-              </span>
-              <span className="text-sm text-slate-700 font-medium ml-auto">
-                AI, Data Engineer, 팀장
-              </span>
-            </div>
-            <p className="text-xs text-gray-800 leading-relaxed mb-3">
-              브라우징 로그를 기반으로 사용자 관심사를 분석하고 개인화된
-              뉴스·퀴즈를 추천하는 Chrome Extension 기반 마이크로 러닝 서비스
-            </p>
+          <Header />
 
-            {/* 첫 페이지 스타일의 선 - description 아래 */}
-            <div className="relative">
-              {/* 전체 얇은 선 */}
-              <div className="w-full h-0.5 bg-green-600" />
-              {/* 왼쪽 두꺼운 선 */}
-              <div className="absolute left-0 -top-1.5 w-[1.5cm] h-3 bg-green-600" />
+          {/* Row 1: 프로젝트 로고 + 이름 + 설명 (좌측) | 커버 이미지 (우측) */}
+          <div className="mb-3">
+            <div className="grid grid-cols-[1.5fr_1fr] gap-6">
+              {/* 좌측: 로고 + 프로젝트 정보 */}
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src="Picky/picky.png"
+                    alt="Picky Logo"
+                    className="w-16 h-16 object-contain"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 mb-1">
+                      Picky
+                    </h3>
+                    <p className="text-xs text-gray-600">
+                      2024.08.26 - 2024.10.04 (6주/6인)
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs font-semibold text-gray-800 leading-relaxed">
+                  브라우징 로그를 기반으로 사용자 관심사를 분석하고 <br />
+                  개인화된 뉴스·퀴즈를 추천하는 크롬 확장 기반 마이크로
+                  러닝 서비스
+                </p>
+              </div>
+
+              {/* 우측: 커버 이미지 */}
+              <div className="flex items-center justify-center">
+                <img
+                  src="Picky/cover.png"
+                  alt="Picky Cover"
+                  className="h-auto w-auto object-contain rounded-lg"
+                />
+              </div>
             </div>
+
+            {/* 구분선 */}
+            <div className="w-full h-[0.3px] bg-green-600 mt-6" />
+          </div>
+
+          {/* Row 2: 역할, 특이사항, 팀원 구성 */}
+          <div className="mb-3">
+            <div className="grid grid-cols-2 gap-8">
+              {/* 좌측: 역할 + 팀원 구성 */}
+              <div>
+                <h4 className="text-xl font-bold text-green-600 mb-2">역할</h4>
+                <p className="text-sm text-gray-800 mb-3">
+                  AI/Data Engineer, 팀장
+                </p>
+
+                <h4 className="text-xs font-bold text-green-600 mb-1">
+                  팀원 구성
+                </h4>
+                <p className="text-xs text-gray-800">
+                  Frontend 2ㅣBackend 2ㅣInfra 1ㅣ<strong>AI/Data</strong> 1
+                </p>
+              </div>
+
+              {/* 우측: 특이사항 */}
+              <div>
+                <h4 className="text-xl font-bold text-green-600 mb-2">
+                  특이사항
+                </h4>
+                <p className="text-sm text-gray-800">
+                  삼성 청년 SW 아카데미 <strong>프로젝트 우수상</strong>{" "}
+                  <span className="text-[10px]">(2등/8팀)</span>
+                </p>
+              </div>
+            </div>
+
+            {/* 구분선 */}
+            <div className="relative mt-6">
+              <div className="w-full h-[0.3px] bg-green-600" />
+            </div>
+          </div>
+
+          {/* Row 3: 개발환경 */}
+          <div className="mb-3">
+            <h4 className="text-xl font-bold text-green-600 mb-4">개발환경</h4>
+            <div className="grid grid-cols-[100px_1fr] gap-y-3">
+              {/* Frontend */}
+              <div className="text-sm text-gray-900">Frontend</div>
+              <div className="text-sm text-gray-800">
+                React, TypeScript, Zustand, TailwindCSS, Chrome Extension (MV3)
+              </div>
+
+              {/* Backend */}
+              <div className="text-sm text-gray-900">Backend</div>
+              <div className="text-sm text-gray-800">
+                Java 17, Spring Boot, JPA
+              </div>
+
+              {/* Database */}
+              <div className="text-sm text-gray-900">Database</div>
+              <div className="text-sm text-gray-800">MySQL, MongoDB, Redis</div>
+
+              {/* AI/Data */}
+              <div className="text-sm text-gray-900">AI/Data</div>
+              <div className="text-sm text-gray-800">
+                Python 3.11, FastAPI, OpenAI API, KoBART, Qdrant, Chrome Extension (MV3)
+              </div>
+
+              {/* Infra */}
+              <div className="text-sm text-gray-900">Infra</div>
+              <div className="text-sm text-gray-800">
+                Docker, GitLab CI/CD, Jenkins, Nginx, Ubuntu, EC2
+              </div>
+            </div>
+
+            {/* 구분선 */}
+            <div className="relative mt-6">
+              <div className="w-full h-[0.3px] bg-green-600" />
+            </div>
+          </div>
+
+          {/* Row 4: Preview */}
+          <div>
+            <h4 className="text-xl font-bold text-green-600 mb-4">Preview</h4>
+            <div className="flex gap-2 justify-between">
+              <img
+                src=""
+                alt="Preview 1"
+                className="h-70 rounded border border-gray-200"
+              />
+              <img
+                src=""
+                alt="Preview 2"
+                className="h-70 rounded border border-gray-200"
+              />
+              <img
+                src=""
+                alt="Preview 3"
+                className="h-70 rounded border border-gray-200"
+              />
+              <img
+                src=""
+                alt="Preview 4"
+                className="h-70 rounded border border-gray-200"
+              />
+              <img
+                src=""
+                alt="Preview 5"
+                className="h-70 rounded border border-gray-200"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
+          - 7 -
+        </div>
+      </div>
+
+      <PageBreak />
+
+      {/* 📄 Page 2 - 상세 설명 */}
+      <div className="relative h-[297mm] w-[210mm]">
+        <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
+          <Header />
+
+          {/* 프로젝트 목표 */}
+          <div className="mb-6">
+            <h4 className="text-base font-bold text-slate-900 mb-2">
+              프로젝트 목표
+            </h4>
+            <p className="text-xs text-gray-800 leading-relaxed">
+              웹 사용자의 브라우징 행동 데이터를 바탕으로 관심사를 추론하고,{" "}
+              <br />
+              그에 맞춰 개인화된 뉴스 및 퀴즈 형태의 마이크로 러닝 콘텐츠를
+              추천하는 것을 목표로 했습니다.
+            </p>
           </div>
 
           {/* 프로젝트 목표 */}
@@ -172,7 +324,7 @@ export default function PickyProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 6 -
+          - 8 -
         </div>
       </div>
 

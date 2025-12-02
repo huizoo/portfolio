@@ -1,155 +1,161 @@
 import PageBreak from "./PageBreak";
+import Header from "./Header";
 
 export default function ToGatherProject() {
   return (
     <>
-      {/* 📄 Page 1 */}
+      {/* 📄 Page 1 - 프로젝트 소개 */}
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
-          {/* 1-4) 타이틀, 기간, 역할, 한 줄 설명 */}
-          <div className="mb-6">
-            <div className="flex items-baseline gap-2 mb-3">
-              <h3 className="text-2xl font-bold text-slate-900">ToGather</h3>
-              <span className="text-[10px] text-gray-600 font-medium">
-                2025.10.10 - 2025.11.20
-              </span>
-              <span className="text-sm text-slate-700 font-medium ml-auto">
-                AI, Frontend Lead
-              </span>
+          <Header />
+
+          {/* Row 1: 프로젝트 로고 + 이름 + 설명 (좌측) | 커버 이미지 (우측) */}
+          <div className="mb-3">
+            <div className="grid grid-cols-[1.5fr_1fr] gap-6">
+              {/* 좌측: 로고 + 프로젝트 정보 */}
+              <div>
+                <div className="flex items-center gap-4 mb-4">
+                  <img
+                    src="/ToGather/logo.png"
+                    alt="ToGather Logo"
+                    className="w-16 h-16 object-contain border border-gray-300"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-bold text-slate-800 mb-1">
+                      ToGather
+                    </h3>
+                    <p className="text-xs text-gray-600">
+                      2024.10.14 - 2024.11.19 (6주/6인)
+                    </p>
+                  </div>
+                </div>
+                <p className="text-xs font-semibold text-gray-800 leading-relaxed">
+                  커플이 일상을 기록하고 공유하며, 두 사람의 기록을 기반으로{" "}
+                  <br />
+                  개인화된 경험을 제공하는 모바일 라이프로그 서비스
+                </p>
+              </div>
+
+              {/* 우측: 커버 이미지 */}
+              <div className="flex items-center justify-center">
+                <img
+                  src="/ToGather/cover.png"
+                  alt="ToGather Cover"
+                  className="h-auto w-auto rounded-lg "
+                />
+              </div>
             </div>
-            <p className="text-xs text-gray-800 leading-relaxed mb-3">
-              커플이 일상을 기록하고 공유하며, 두 사람의 기록을 기반으로
-              개인화된 경험을 제공하는 모바일 라이프로그 서비스
-            </p>
 
-            {/* 첫 페이지 스타일의 선 - description 아래 */}
-            <div className="relative">
-              {/* 전체 얇은 선 */}
-              <div className="w-full h-0.5 bg-green-600" />
-              {/* 왼쪽 두꺼운 선 */}
-              <div className="absolute left-0 -top-1.5 w-[1.5cm] h-3 bg-green-600" />
+            {/* 구분선 */}
+            <div className="w-full h-[0.3px] bg-green-600 mt-6" />
+          </div>
+
+          {/* Row 2: 역할, 특이사항, 팀원 구성 */}
+          <div className="mb-3">
+            <div className="grid grid-cols-2 gap-8">
+              {/* 좌측: 역할 + 팀원 구성 */}
+              <div>
+                <h4 className="text-xl font-bold text-green-600 mb-2">역할</h4>
+                <p className="text-sm text-gray-800 mb-3">
+                  AI<span className="text-xs">(60%)</span>, Frontend
+                  <span className="text-xs">(40%)</span>
+                </p>
+
+                <h4 className="text-xs font-bold text-green-600 mb-1">
+                  팀원 구성
+                </h4>
+                <p className="text-xs text-gray-800">
+                  <strong>Frontend</strong> 2ㅣBackend 3ㅣInfra 1 (
+                  <strong>AI</strong>: FE 1, BE 1 참여)
+                </p>
+              </div>
+
+              {/* 우측: 특이사항 */}
+              <div>
+                <h4 className="text-xl font-bold text-green-600 mb-2">
+                  특이사항
+                </h4>
+                <p className="text-sm text-gray-800">
+                  삼성 청년 SW 아카데미 <strong>프로젝트 우수상</strong>{" "}
+                  <span className="text-[10px]">(2등/6팀)</span>
+                </p>
+              </div>
             </div>
-          </div>
 
-          {/* 5) 프로젝트 목표 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-2">
-              프로젝트 목표
-            </h4>
-            <p className="text-xs text-gray-800 leading-relaxed">
-              커플의 기록을 단순 저장이 아니라 다시 꺼내볼 수 있는 맞춤형 추억
-              회상 경험으로 만드는 것을 목표로 했습니다.
-            </p>
-          </div>
-
-          {/* 6) 내 핵심 기여 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-3">
-              핵심 기여
-            </h4>
-            <ul className="space-y-2">
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                커플 기록 기반 개인화 AI 챗봇: <br />
-                자연어 날짜 파싱 → 메타데이터 필터 우선 적용 RAG 파이프라인
-                설계·구현으로 날짜 쿼리 정확도 개선
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Qdrant 단일 컬렉션 + 메타데이터 필터 구조로 couple_id별 벡터
-                격리 및 type(profile/diary/plan) 분리 저장 → 검색 성능 최적화
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                앱 재진입 시 상태 기반 분기 로직을 설계하여 커플
-                상태·프로필·초대 코드에 따라 온보딩을 복원
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                SSE 실시간 커플 연동: 피초대자 코드 입력 시 초대자 자동 화면
-                이동, 실시간 동기화로 초기 이탈률 감소
-              </li>
-            </ul>
-          </div>
-
-          {/* 7) 사용 기술 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold  text-slate-900 mb-3">
-              사용 기술
-            </h4>
-            <div className="flex flex-wrap gap-2">
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                FastAPI
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Qdrant
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Text Embedding
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                RAG
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                React Native (Expo)
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                TypeScript
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                Zustand
-              </span>
-              <span className="inline-block px-2.5 py-1 bg-slate-100 text-slate-700 rounded text-xs font-medium">
-                TanStack Query
-              </span>
+            {/* 구분선 */}
+            <div className="relative mt-6">
+              <div className="w-full h-[0.3px] bg-green-600" />
             </div>
           </div>
 
-          {/* 9) 성과 */}
-          <div className="mb-6">
-            <h4 className="text-base font-bold text-slate-900 mb-3">성과</h4>
-            <ul className="space-y-2">
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                날짜 쿼리 정확도 대폭 향상: 자연어 날짜 파싱 + 메타데이터 필터
-                우선 적용으로 날짜 관련 질문 정확도 99% 달성
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                검색 성능 최적화: 단일 컬렉션 구조와 Range 필터 적용으로 Qdrant
-                검색 성능 최적화
-              </li>
-              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                온보딩 이탈률 감소: SSE 동기화로 커플 연동 과정 실시간 피드백
-                제공
-              </li>
-            </ul>
+          {/* Row 3: 개발환경 */}
+          <div className="mb-3">
+            <h4 className="text-xl font-bold text-green-600 mb-4">개발환경</h4>
+            <div className="grid grid-cols-[100px_1fr] gap-y-3">
+              {/* Frontend */}
+              <div className="text-sm text-gray-900">Frontend</div>
+              <div className="text-sm text-gray-800">
+                React Native (Expo), TypeScript, Zustand, TanStack Query
+              </div>
+
+              {/* Backend */}
+              <div className="text-sm text-gray-900">Backend</div>
+              <div className="text-sm text-gray-800">
+                Java 17, Spring Boot, JPA
+              </div>
+
+              {/* Database */}
+              <div className="text-sm text-gray-900">Database</div>
+              <div className="text-sm text-gray-800">MySQL, Redis</div>
+
+              {/* AI */}
+              <div className="text-sm text-gray-900">AI</div>
+              <div className="text-sm text-gray-800">
+                Python 3.11, FastAPI, Google Gemini API, OpenAI API, Qdrant,
+                Pillow
+              </div>
+
+              {/* Infra */}
+              <div className="text-sm text-gray-900">Infra</div>
+              <div className="text-sm text-gray-800">
+                Docker, GitLab CI/CD, Jenkins, Nginx, Ubuntu, EC2, S3
+              </div>
+            </div>
+
+            {/* 구분선 */}
+            <div className="relative mt-6">
+              <div className="w-full h-[0.3px] bg-green-600" />
+            </div>
           </div>
 
-          {/* 온보딩 로직 UI 스크린샷 */}
+          {/* Row 4: Preview */}
           <div>
-            <h4 className="text-base font-bold text-slate-900 mb-3">
-              온보딩 플로우
-            </h4>
+            <h4 className="text-xl font-bold text-green-600 mb-4">Preview</h4>
             <div className="flex gap-2 justify-between">
               <img
-                src="/ToGather/login.png"
-                alt="로그인"
-                className="h-72 rounded border border-gray-200"
+                src="/ToGather/home.jpg"
+                alt="Home"
+                className="h-70 rounded border border-gray-200"
               />
               <img
-                src="/ToGather/user-info.png"
-                alt="사용자 정보"
-                className="h-72 rounded border border-gray-200"
+                src="/ToGather/diary.jpg"
+                alt="Diary"
+                className="h-70 rounded border border-gray-200"
               />
               <img
-                src="/ToGather/couple-role.png"
-                alt="커플 역할 선택"
-                className="h-72 rounded border border-gray-200"
+                src="/ToGather/feed.jpg"
+                alt="Feed"
+                className="h-70 rounded border border-gray-200"
               />
               <img
-                src="/ToGather/couple-invite.png"
-                alt="커플 초대"
-                className="h-72 rounded border border-gray-200"
+                src="/ToGather/plan.jpg"
+                alt="Plan"
+                className="h-70 rounded border border-gray-200"
               />
               <img
-                src="/ToGather/couple-join.png"
-                alt="커플 가입"
-                className="h-72 rounded border border-gray-200"
+                src="/ToGather/settings.jpg"
+                alt="Settings"
+                className="h-70 rounded border border-gray-200"
               />
             </div>
           </div>
@@ -162,9 +168,118 @@ export default function ToGatherProject() {
 
       <PageBreak />
 
-      {/* 📄 Page 2 - 온보딩 */}
+      {/* 📄 Page 2 - 담당 업무 */}
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
+          <Header />
+
+          {/* 1. AI 챗봇 */}
+          <div className="mb-6">
+            <h4 className="text-lg font-bold text-green-600 mb-3">
+              1. AI 챗봇 (개인화 RAG 파이프라인)
+            </h4>
+            <p className="text-xs text-gray-800 leading-relaxed mb-2">
+              커플의 기록을 기반으로 개인화된 답변을 제공하는 AI 챗봇 시스템
+              설계 및 구현
+            </p>
+            <ul className="space-y-1.5 text-xs text-gray-800">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Qdrant 단일 컬렉션 + type(profile/diary/plan) 분리 저장 구조
+                설계
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                3단계 분리 검색: profile 직접 조회 → diary 벡터 검색 → plan 벡터
+                검색
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Context Sandwich 기법으로 프로필 고정 + 검색 결과 태그 구분
+              </li>
+            </ul>
+          </div>
+
+          <div className="w-full h-[0.3px] bg-green-600 mb-6" />
+
+          {/* 2. Date Parser */}
+          <div className="mb-6">
+            <h4 className="text-lg font-bold text-green-600 mb-3">
+              2. Date Parser (Query Transformation)
+            </h4>
+            <p className="text-xs text-gray-800 leading-relaxed mb-2">
+              자연어 날짜 표현을 정규화하여 날짜 기반 질문 정확도 향상
+            </p>
+            <ul className="space-y-1.5 text-xs text-gray-800">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                정규식 + 규칙 기반 12가지 패턴 파싱 (저번 주, 작년 등)
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                Unix timestamp 범위 변환 → Qdrant Range 필터 적용
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                날짜 쿼리 정확도 99% 달성
+              </li>
+            </ul>
+          </div>
+
+          <div className="w-full h-[0.3px] bg-green-600 mb-6" />
+
+          {/* 3. 온보딩 상태 복원 로직 */}
+          <div className="mb-6">
+            <h4 className="text-lg font-bold text-green-600 mb-3">
+              3. 온보딩 상태 복원 로직
+            </h4>
+            <p className="text-xs text-gray-800 leading-relaxed mb-2">
+              앱 재진입 시 커플 상태, 프로필, 초대 코드에 따라 올바른 단계로
+              복원
+            </p>
+            <ul className="space-y-1.5 text-xs text-gray-800">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                AsyncStorage 기반 상태 복원 및 분기 로직 설계
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                coupleStatus, hasProfile, invitationCode 조합별 화면 분기
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                온보딩 Context로 전역 상태 관리
+              </li>
+            </ul>
+          </div>
+
+          <div className="w-full h-[0.3px] bg-green-600 mb-6" />
+
+          {/* 4. SSE 처리 */}
+          <div>
+            <h4 className="text-lg font-bold text-green-600 mb-3">
+              4. SSE 실시간 커플 연동
+            </h4>
+            <p className="text-xs text-gray-800 leading-relaxed mb-2">
+              Server-Sent Events를 활용한 커플 매칭 실시간 동기화
+            </p>
+            <ul className="space-y-1.5 text-xs text-gray-800">
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                피초대자 코드 입력 시 초대자 자동 홈 화면 이동
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                실시간 동기화로 커플 연동 대기 시간 최소화
+              </li>
+              <li className="pl-3 relative before:content-['•'] before:absolute before:left-0">
+                온보딩 이탈률 감소 효과
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
+          - 4 -
+        </div>
+      </div>
+
+      <PageBreak />
+
+      {/* 📄 Page 3 - 온보딩 */}
+      <div className="relative h-[297mm] w-[210mm]">
+        <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
+          <Header />
+
           <h4 className="text-xl font-bold text-slate-900 mb-4">
             온보딩 상태 복원 로직
           </h4>
@@ -234,15 +349,17 @@ export default function ToGatherProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 4 -
+          - 5 -
         </div>
       </div>
 
       <PageBreak />
 
-      {/* 📄 Page 3 - RAG */}
+      {/* 📄 Page 4 - RAG */}
       <div className="relative h-[297mm] w-[210mm]">
         <div className="absolute top-[20mm] left-[10mm] right-[10mm] bottom-[20mm] overflow-hidden">
+          <Header />
+
           <h4 className="text-xl font-bold text-slate-900 mb-4">
             개인화 AI 챗봇 RAG 파이프라인(Advanced RAG)
           </h4>
@@ -350,7 +467,7 @@ export default function ToGatherProject() {
         </div>
 
         <div className="absolute bottom-[10mm] left-0 right-0 text-center text-xs text-slate-800">
-          - 5 -
+          - 6 -
         </div>
       </div>
 
