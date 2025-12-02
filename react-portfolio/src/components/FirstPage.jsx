@@ -360,7 +360,7 @@ export default function FirstPage() {
                   규칙을 준수합니다.
                 </li>
                 <li className="pl-2 relative before:content-['•'] before:absolute before:left-0">
-                  협업 환경에서 환경에서 충돌을 효과적으로 관리하고, Git
+                  협업 환경에서 충돌을 효과적으로 관리하고, Git
                   명령어를 활용해 병합 이슈를 빠르게 해결한 경험이 있습니다.
                 </li>
               </ul>
