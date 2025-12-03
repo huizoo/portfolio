@@ -55,13 +55,13 @@ export default function ToGatherProject() {
             <div className="grid grid-cols-2 gap-8">
               {/* 좌측: 역할 + 팀원 구성 */}
               <div>
-                <h4 className="text-xl font-bold text-green-600 mb-2">역할</h4>
-                <p className="text-sm text-gray-800 mb-3">
+                <h4 className="text-lg font-bold text-green-600 mb-2">역할</h4>
+                <p className="text-xs text-gray-800 mb-3">
                   AI<span className="text-xs">(60%)</span>, Frontend
                   <span className="text-xs">(40%)</span>
                 </p>
 
-                <h4 className="text-xs font-bold text-green-600 mb-1">
+                <h4 className="text-lg font-bold text-green-600 mb-1">
                   팀원 구성
                 </h4>
                 <p className="text-xs text-gray-800">
@@ -72,10 +72,10 @@ export default function ToGatherProject() {
 
               {/* 우측: 특이사항 */}
               <div>
-                <h4 className="text-xl font-bold text-green-600 mb-2">
+                <h4 className="text-lg font-bold text-green-600 mb-2">
                   특이사항
                 </h4>
-                <p className="text-sm text-gray-800">
+                <p className="text-xs text-gray-800">
                   삼성 청년 SW 아카데미 <strong>프로젝트 우수상</strong>{" "}
                   <span className="text-[10px]">(2등/6팀)</span>
                 </p>
@@ -90,34 +90,34 @@ export default function ToGatherProject() {
 
           {/* Row 3: 개발환경 */}
           <div className="mb-3">
-            <h4 className="text-xl font-bold text-green-600 mb-4">개발환경</h4>
+            <h4 className="text-lg font-bold text-green-600 mb-4">개발환경</h4>
             <div className="grid grid-cols-[100px_1fr] gap-y-3">
               {/* Frontend */}
-              <div className="text-sm text-gray-900">Frontend</div>
-              <div className="text-sm text-gray-800">
+              <div className="text-xs text-gray-900">Frontend</div>
+              <div className="text-xs text-gray-800">
                 React Native (Expo), TypeScript, Zustand, TanStack Query
               </div>
 
               {/* Backend */}
-              <div className="text-sm text-gray-900">Backend</div>
-              <div className="text-sm text-gray-800">
+              <div className="text-xs text-gray-900">Backend</div>
+              <div className="text-xs text-gray-800">
                 Java 17, Spring Boot, JPA, Spring Security
               </div>
 
               {/* Database */}
-              <div className="text-sm text-gray-900">Database</div>
-              <div className="text-sm text-gray-800">MySQL, Redis</div>
+              <div className="text-xs text-gray-900">Database</div>
+              <div className="text-xs text-gray-800">MySQL, Redis</div>
 
               {/* AI */}
-              <div className="text-sm text-gray-900">AI</div>
-              <div className="text-sm text-gray-800">
+              <div className="text-xs text-gray-900">AI</div>
+              <div className="text-xs text-gray-800">
                 Python 3.11, FastAPI, Google Gemini API, OpenAI API, Qdrant,
                 Pillow
               </div>
 
               {/* Infra */}
-              <div className="text-sm text-gray-900">Infra</div>
-              <div className="text-sm text-gray-800">
+              <div className="text-xs text-gray-900">Infra</div>
+              <div className="text-xs text-gray-800">
                 Docker, GitLab CI/CD, Jenkins, Nginx, Ubuntu, EC2, S3
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function ToGatherProject() {
 
           {/* Row 4: Preview */}
           <div>
-            <h4 className="text-xl font-bold text-green-600 mb-4">Preview</h4>
+            <h4 className="text-lg font-bold text-green-600 mb-4">Preview</h4>
             <div className="flex gap-2 justify-between">
               <figure className="flex flex-col items-center">
                 <img
@@ -381,7 +381,7 @@ export default function ToGatherProject() {
           </div>
 
           {/* 기술적 포인트 */}
-          <div>
+          <div className="mb-4">
             <h5 className="text-sm font-bold text-slate-900 mb-2">
               기술적 포인트
             </h5>
@@ -396,13 +396,31 @@ export default function ToGatherProject() {
                 timestamp 범위로 변환 → Qdrant Range 필터 적용
               </li>
               <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
-                Context Sandwich: 프로필(최상단 고정) → [diary] + [plan] 검색
-                결과 태그 구분 → 프롬프트로 LLM 전달
+                Context Sandwich 프롬프트: [응답 지침] → [안전 규칙] → [커플 프로필] → [커플 추억 기록] → [사용자 질문] 순서로 구조화
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                커플 추억 기록은 diary와 plan 검색 결과를 태그로 구분하여 LLM이 출처를 인식하고 답변 생성
               </li>
               <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
                 {
                   "point_id 기반 자동 업서트: couple_{couple_id}_{type}_{id} 형식으로 수정 시 벡터 자동 갱신"
                 }
+              </li>
+            </ul>
+          </div>
+
+          {/* 성과 */}
+          <div>
+            <h5 className="text-sm font-bold text-slate-900 mb-2">성과</h5>
+            <ul className="space-y-1.5">
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                날짜 기반 질의 정확도 99% 달성 (12가지 날짜 패턴 파싱 적용)
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                "저번 주에 뭐 했어?", "지난달 데이트 어디 갔지?" 같은 상대 날짜 표현도 정확하게 검색 가능
+              </li>
+              <li className="text-xs text-gray-800 leading-relaxed pl-3 relative before:content-['•'] before:absolute before:left-0">
+                사용자 맞춤형 답변 생성으로 챗봇 만족도 향상 및 서비스 차별화 포인트 확보
               </li>
             </ul>
           </div>

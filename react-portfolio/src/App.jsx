@@ -64,13 +64,13 @@ function App() {
 
         <PageBreak />
 
-        {/* 📄 Page 3-4-5: ToGather 프로젝트 */}
+        {/* 📄 Page 3-6: ToGather 프로젝트 (4페이지) */}
         <ToGatherProject />
 
-        {/* 📄 Page 6-7: Picky 프로젝트 */}
+        {/* 📄 Page 7-9: Picky 프로젝트 (3페이지) */}
         <PickyProject />
 
-        {/* 📄 Page 8-9: Ottereview 프로젝트 */}
+        {/* 📄 Page 10-11: Ottereview 프로젝트 (2페이지) */}
         <OttereviewProject />
       </div>
     </div>
