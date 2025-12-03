@@ -142,7 +142,7 @@ export default function PickyProject() {
               </figure>
               <figure className="flex flex-col items-center">
                 <img
-                  src="/Picky/news.png"
+                  src="/Picky/News.png"
                   alt="Picky News"
                   className="h-[200px] w-auto object-contain rounded border border-gray-200"
                 />
